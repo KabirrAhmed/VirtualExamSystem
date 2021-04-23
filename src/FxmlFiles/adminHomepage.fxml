@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.adminHomepage">
+   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1024.0" style="-fx-background-color: #1E1E24;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+      <children>
+         <AnchorPane layoutX="339.0" layoutY="89.0" prefHeight="166.0" prefWidth="167.0" style="-fx-background-color: E0E0E0;" AnchorPane.bottomAnchor="295.0" AnchorPane.rightAnchor="518.0" AnchorPane.topAnchor="89.0">
+            <children>
+               <JFXButton fx:id="studentBtn" layoutX="58.0" layoutY="71.0" mnemonicParsing="false" onAction="#studentOnClick" ripplerFill="WHITE" style="-fx-background-color: grey;" text="Student" textFill="WHITE" />
+            </children></AnchorPane>
+         <AnchorPane layoutX="555.0" layoutY="89.0" prefHeight="166.0" prefWidth="167.0" style="-fx-background-color: E0E0E0;">
+            <children>
+               <JFXButton fx:id="facultyBtn" layoutX="52.0" layoutY="71.0" mnemonicParsing="false" onAction="#facultyOnClick" ripplerFill="WHITE" style="-fx-background-color: grey;" text="Faculty" textFill="WHITE" />
+            </children>
+         </AnchorPane>
+         <AnchorPane layoutX="760.0" layoutY="89.0" prefHeight="166.0" prefWidth="167.0" style="-fx-background-color: E0E0E0;">
+            <children>
+               <JFXButton fx:id="courseBtn" layoutX="62.0" layoutY="70.0" mnemonicParsing="false" onAction="#courseOnClick" ripplerFill="WHITE" style="-fx-background-color: grey;" text="Courses" textFill="WHITE" />
+            </children>
+         </AnchorPane>
+         <AnchorPane layoutX="339.0" layoutY="295.0" prefHeight="166.0" prefWidth="167.0" style="-fx-background-color: E0E0E0;">
+            <children>
+               <Label layoutX="42.0" layoutY="54.0" text="No. of Students" />
+               <Label fx:id="labelStudents" alignment="CENTER" layoutX="77.0" layoutY="75.0" text="15" />
+            </children></AnchorPane>
+         <AnchorPane layoutX="555.0" layoutY="295.0" prefHeight="166.0" prefWidth="167.0" style="-fx-background-color: E0E0E0;">
+            <children>
+               <Label layoutX="47.0" layoutY="55.0" text="No. of Faculty" />
+               <Label fx:id="labelFaculty" alignment="CENTER" layoutX="77.0" layoutY="75.0" text="15" />
+            </children>
+         </AnchorPane>
+         <AnchorPane layoutX="760.0" layoutY="295.0" prefHeight="166.0" prefWidth="167.0" style="-fx-background-color: E0E0E0;">
+            <children>
+               <Label layoutX="45.0" layoutY="58.0" text="No. of Courses" />
+               <Label fx:id="labelCourses" alignment="CENTER" layoutX="77.0" layoutY="75.0" text="15" />
+            </children>
+         </AnchorPane>
+         <AnchorPane prefHeight="550.0" prefWidth="230.0" style="-fx-background-color: E0E0E0;">
+            <children>
+               <Button layoutX="6.0" layoutY="524.0" mnemonicParsing="false" />
+               <JFXButton fx:id="backBtn" layoutX="95.0" layoutY="432.0" mnemonicParsing="false" onAction="#backOnClick" style="-fx-background-color: grey;" text="Back" textFill="WHITE" />
+            </children></AnchorPane>
+      </children>
+   </AnchorPane>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>
