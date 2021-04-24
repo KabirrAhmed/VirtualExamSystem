@@ -103,7 +103,7 @@
               <columns>
                 <TableColumn fx:id="colId" prefWidth="108.0" style="-fx-background-color: #439775;" text="ID" />
                 <TableColumn fx:id="colName" prefWidth="466.0" style="-fx-background-color: #439775;" text="Name" />
-                  <TableColumn fx:id="colScore" minWidth="0.0" prefWidth="173.0" style="-fx-background-color: #439775;" text="Score" />
+                  <TableColumn fx:id="colGpa" minWidth="0.0" prefWidth="173.0" style="-fx-background-color: #439775;" text="Score" />
               </columns>
             </TableView>
          </children>
