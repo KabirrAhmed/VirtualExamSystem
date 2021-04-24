@@ -55,7 +55,7 @@ public class adminStudent implements Initializable {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
         colId.setCellValueFactory(new PropertyValueFactory<>("StudentId"));
         colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        colGpa.setCellValueFactory(new PropertyValueFactory<>("Score"));
+        colGpa.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
         //add your data to the table here.
         tableView.setItems(dataModels);
         courseIdText.setText(String.valueOf(quizId));
@@ -85,6 +85,7 @@ public class adminStudent implements Initializable {
                 dataModel dm = new dataModel();
                 dm.setStudentId(Integer.parseInt(rs.getString("idstudent")));
                 dm.setName(rs.getString("first_name"));
+                dm.setGpa(Float.parseFloat(rs.getString("gpa")));
                 dataModels.add(dm);
             }
             tableView.setItems(dataModels);
