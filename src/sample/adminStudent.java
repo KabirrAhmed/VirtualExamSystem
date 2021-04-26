@@ -6,20 +6,14 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,28 +35,27 @@ public class adminStudent implements Initializable {
     public Label courseText;
     public Label nameText;
     public JFXButton backBtn;
+    public ImageView searchButton;
 
     int quizId = 3, studentId;
 
     public TableView<dataModel> tableView;
     public TableColumn<dataModel, Integer> colId;
     public TableColumn<dataModel, String> colName;
-    public TableColumn<dataModel, Integer> colCourseId;
-    public TableColumn<dataModel, String> colCourse;
-    public TableColumn<dataModel, Integer> colScore;
+    public TableColumn<dataModel, Integer> colGpa;
 
     static Connection connection = null;
     static String databaseName = "studentmanagementsystem";
     static String url = "jdbc:mysql://localhost:3306/" + databaseName;
     static String username = "root";
-    static String pass = "root123";
+    static String pass = "";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /*//make sure the property value factory should be exactly same as the e.g getStudentId from your model class
+        //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
         colId.setCellValueFactory(new PropertyValueFactory<>("StudentId"));
         colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        colScore.setCellValueFactory(new PropertyValueFactory<>("Score"));
+        colGpa.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
         //add your data to the table here.
         tableView.setItems(dataModels);
         courseIdText.setText(String.valueOf(quizId));
@@ -81,31 +74,18 @@ public class adminStudent implements Initializable {
         });
     }
 
+
+
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps;
-            if(searchText.getText().equalsIgnoreCase("")){
-                ps = connection.prepareStatement("SELECT idStudent, fNameStudent, lNameStudent , result.quizResult, course.nameCourse   FROM database1.student\n" +
-                        "JOIN database1.result ON database1.student.idStudent = database1.result.student_idStudent\n" +
-                        "JOIN database1.quiz ON database1.result.quiz_idquiz = database1.quiz.idquiz\n" +
-                        "JOIN database1.course ON database1.quiz.course_idCourse = database1.course.idCourse WHERE result.quiz_idquiz = "+Integer.parseInt(courseIdText.getText())+";");
-                //"WHERE idStudent = "+1912350+";");
-            }
-            else{
-                ps = connection.prepareStatement("SELECT idStudent, fNameStudent, lNameStudent , result.quizResult, course.nameCourse   FROM database1.student\n" +
-                        "JOIN database1.result ON database1.student.idStudent = database1.result.student_idStudent\n" +
-                        "JOIN database1.quiz ON database1.result.quiz_idquiz = database1.quiz.idquiz\n" +
-                        "JOIN database1.course ON database1.quiz.course_idCourse = database1.course.idCourse WHERE result.quiz_idquiz = "+Integer.parseInt(courseIdText.getText())+" AND idStudent = "+Integer.parseInt(searchText.getText())+";");
-                //"WHERE idStudent = "+1912350+";");
-            }
+            PreparedStatement ps = connection.prepareStatement("SELECT idstudent, first_name, gpa FROM student");;
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
-                dm.setStudentId(Integer.parseInt(rs.getString("idStudent")));
-                dm.setName((rs.getString("fNameStudent") +"  "+ rs.getString("lNameStudent")));
-                dm.setCourseName(rs.getString("nameCourse"));
-                dm.setScore(Integer.parseInt(rs.getString("quizResult")));
+                dm.setStudentId(Integer.parseInt(rs.getString("idstudent")));
+                dm.setName(rs.getString("first_name"));
+                dm.setGpa(Float.parseFloat(rs.getString("gpa")));
                 dataModels.add(dm);
             }
             tableView.setItems(dataModels);
@@ -113,11 +93,11 @@ public class adminStudent implements Initializable {
         }
         catch(Exception e){
             e.printStackTrace();
-            try {
+            /*try {
                 popupCross("Incorrect input try again","",false,false);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
-            }
+            }*/
         }
     }
 
@@ -129,10 +109,9 @@ public class adminStudent implements Initializable {
 
 
     private ObservableList<dataModel> dataModels;
-*/
 
 
-    }
+
     public void insertDataAction(ActionEvent actionEvent) {
         /*deleteData();
         insertData();
@@ -211,18 +190,18 @@ public class adminStudent implements Initializable {
     }
 
 
-
+*/
     public void events(){
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
                 nameText.setText("Name: "+dataModel1.getName());
                 idText.setText(String.valueOf(+dataModel1.getStudentId()));
-                scoreText.setText(String.valueOf(+dataModel1.getScore()));
+                scoreText.setText(String.valueOf(+dataModel1.getGpa()));
             }
 
         }
     }
-
+/*
     public boolean checkIfRecordExists() throws SQLException {
         PreparedStatement ps = connection.prepareStatement("SELECT student_idStudent, quiz_idquiz  FROM database1.result\n" +
                 "WHERE student_idStudent = "+idText.getText()+" AND quiz_idquiz="+courseIdText.getText()+";");

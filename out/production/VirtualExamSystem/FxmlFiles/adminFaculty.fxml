@@ -15,7 +15,7 @@
 
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.control.TextField?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1024.0" style="-fx-background-color: #1E1E24;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.adminStudent">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1024.0" style="-fx-background-color: #1E1E24;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.phyDataCourse">
    <children>
       <ImageView fitHeight="550.0" fitWidth="231.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -103,7 +103,7 @@
               <columns>
                 <TableColumn fx:id="colId" prefWidth="108.0" style="-fx-background-color: #439775;" text="ID" />
                 <TableColumn fx:id="colName" prefWidth="466.0" style="-fx-background-color: #439775;" text="Name" />
-                  <TableColumn fx:id="colGpa" minWidth="0.0" prefWidth="173.0" style="-fx-background-color: #439775;" text="Score" />
+                  <TableColumn fx:id="colScore" minWidth="0.0" prefWidth="173.0" style="-fx-background-color: #439775;" text="Score" />
               </columns>
             </TableView>
          </children>
