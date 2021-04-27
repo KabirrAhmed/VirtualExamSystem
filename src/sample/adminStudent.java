@@ -6,7 +6,10 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -14,6 +17,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,7 +46,10 @@ public class adminStudent implements Initializable {
 
     public TableView<dataModel> tableView;
     public TableColumn<dataModel, Integer> colId;
-    public TableColumn<dataModel, String> colName;
+    public TableColumn<dataModel, String> colFirstName;
+    public TableColumn<dataModel, String> colLastName;
+    public TableColumn<dataModel, String> colRegDate;
+    public TableColumn<dataModel, String> colPassword;
     public TableColumn<dataModel, Integer> colGpa;
 
     static Connection connection = null;
@@ -54,11 +62,13 @@ public class adminStudent implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
         colId.setCellValueFactory(new PropertyValueFactory<>("StudentId"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        colFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        colLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        colPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
+        colRegDate.setCellValueFactory(new PropertyValueFactory<>("regDate"));
         colGpa.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
         //add your data to the table here.
         tableView.setItems(dataModels);
-        courseIdText.setText(String.valueOf(quizId));
         try {
             connection = DriverManager.getConnection(url, username, pass);
             buildData();
@@ -79,13 +89,16 @@ public class adminStudent implements Initializable {
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT idstudent, first_name, gpa FROM student");;
+            PreparedStatement ps = connection.prepareStatement("SELECT idstudent, first_name, last_name, gpa, registration_date, passwordStudent FROM student");;
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
                 dm.setStudentId(Integer.parseInt(rs.getString("idstudent")));
-                dm.setName(rs.getString("first_name"));
+                dm.setFirstName(rs.getString("first_name"));
+                dm.setLastName(rs.getString("last_name"));
                 dm.setGpa(Float.parseFloat(rs.getString("gpa")));
+                dm.setRegDate(rs.getString("registration_date"));
+                dm.setPassword(rs.getString("passwordStudent"));
                 dataModels.add(dm);
             }
             tableView.setItems(dataModels);
@@ -93,11 +106,11 @@ public class adminStudent implements Initializable {
         }
         catch(Exception e){
             e.printStackTrace();
-            /*try {
+            try {
                 popupCross("Incorrect input try again","",false,false);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
-            }*/
+            }
         }
     }
 
@@ -113,39 +126,39 @@ public class adminStudent implements Initializable {
 
 
     public void insertDataAction(ActionEvent actionEvent) {
-        /*deleteData();
+        deleteData();
         insertData();
         buildData();
         try {
             popupTick("Data Inserted Successfully" , "" , false, false);
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     public void editDataAction(ActionEvent actionEvent) {
-        /*deleteData();
+        deleteData();
         insertData();
         buildData();
         try {
             popupTick("Data Updated Successfully" , "" , false, false);
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     public void deleteDataAction(ActionEvent actionEvent) {
-        /*deleteData();
+        deleteData();
         buildData();
         try {
             popupTick("Data Deleted Successfully" , "" , false, false);
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
-        /*FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/teacherHomepage.fxml"));
+        FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/adminHomepage.fxml"));
         Parent root = fm.load();
         Stage s = new Stage();
         Scene sc = new Scene(root);
@@ -154,9 +167,8 @@ public class adminStudent implements Initializable {
         s.initStyle(StageStyle.UNDECORATED);
         s.setScene(sc);
         s.setTitle("Welcome, admin");
-        s.show();*/
+        s.show();
     }
-/*
     public void deleteData(){
         try{
             Statement state = connection.createStatement();
@@ -180,7 +192,7 @@ public class adminStudent implements Initializable {
             }
             else{
                 Statement state = connection.createStatement();
-                String query = "INSERT INTO `database1`.`result` (`quizResult`, `quiz_idquiz`, `student_idStudent`) VALUES ('"+Integer.parseInt(scoreText.getText())+"','"+Integer.parseInt(courseIdText.getText())+"','"+Integer.parseInt(idText.getText())+"');\n";
+                String query = "INSERT INTO `studentmanagementsystem`.`student` (`quizResult`, `quiz_idquiz`, `student_idStudent`) VALUES ('"+Integer.parseInt(scoreText.getText())+"','"+Integer.parseInt(courseIdText.getText())+"','"+Integer.parseInt(idText.getText())+"');\n";
                 state.executeUpdate(query);//EXECUTES QUERY
             }
         } catch (SQLException throwables) {
@@ -190,7 +202,6 @@ public class adminStudent implements Initializable {
     }
 
 
-*/
     public void events(){
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
@@ -201,13 +212,12 @@ public class adminStudent implements Initializable {
 
         }
     }
-/*
     public boolean checkIfRecordExists() throws SQLException {
-        PreparedStatement ps = connection.prepareStatement("SELECT student_idStudent, quiz_idquiz  FROM database1.result\n" +
-                "WHERE student_idStudent = "+idText.getText()+" AND quiz_idquiz="+courseIdText.getText()+";");
+        PreparedStatement ps = connection.prepareStatement("SELECT idstudent  FROM studentmanagementsystem.student\n" +
+                "WHERE idstudent = "+idText.getText()+";");
         ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
         while (rs.next()) {
-            if(rs.getString("student_idStudent") == idText.getText() && rs.getString("quiz_idquiz") == courseIdText.getText())
+            if(rs.getString("idstudent") == idText.getText())
                 return true;
         }
         return false;
@@ -229,6 +239,7 @@ public class adminStudent implements Initializable {
         s.show();
 
     }
+
     public void popupCross(String text , String fxmlFile, boolean closeWindow, boolean openNewWindow) throws IOException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FXMLFiles/popupCrossMarkOneB.fxml"));
         Parent root = fm.load();
@@ -246,16 +257,16 @@ public class adminStudent implements Initializable {
         s.show();
 
     }
-    */
+
     public Circle closeAppBtn;
     public void closeAppBtnOnClick(MouseEvent mouseEvent) {
-        /*Stage stage = (Stage) closeAppBtn.getScene().getWindow();
-        stage.close();*/
+        Stage stage = (Stage) closeAppBtn.getScene().getWindow();
+        stage.close();
     }
 
     public void minimizeBtnOnClick(MouseEvent mouseEvent) {
-        /*Stage stage = (Stage) closeAppBtn.getScene().getWindow();
-        stage.setIconified(true);*/
+        Stage stage = (Stage) closeAppBtn.getScene().getWindow();
+        stage.setIconified(true);
     }
 
 
