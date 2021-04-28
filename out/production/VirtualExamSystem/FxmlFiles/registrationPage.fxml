@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.registrationPage">
+   <children>
+      <HBox layoutX="6.0" layoutY="7.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="550.0" prefWidth="526.0" style="-fx-background-color: 554654;">
+               <children>
+                  <ImageView fitHeight="571.0" fitWidth="866.0" layoutX="-18.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/15740.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="62.0" layoutY="211.0" text="Let's Get" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="62.0" layoutY="246.0" text="Started" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="48.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="133.0" layoutY="346.0" text="Sign up here" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="10.0" layoutY="10.0" prefHeight="550.0" prefWidth="931.0" style="-fx-background-color: #E0E0E0;">
+               <children>
+                  <Label layoutX="204.0" layoutY="47.0" text="Register with your own ID" textFill="#1e1e24">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <JFXPasswordField fx:id="passwordText" focusColor="#63ffb1" labelFloat="true" layoutX="101.0" layoutY="250.0" prefHeight="25.0" prefWidth="270.0" promptText="Password" unFocusColor="#48bf84" />
+                  <JFXPasswordField fx:id="passwordConfirmText" focusColor="#63ffb1" labelFloat="true" layoutX="101.0" layoutY="318.0" prefHeight="25.0" prefWidth="270.0" promptText="Confirm Password" unFocusColor="#48bf84" />
+                  <JFXTextField fx:id="lNameText" focusColor="#63ffb1" labelFloat="true" layoutX="392.0" layoutY="189.0" prefHeight="25.0" prefWidth="219.0" promptText="Last Name" unFocusColor="#48bf84" />
+                  <JFXTextField fx:id="fNameText" focusColor="#63ffb1" labelFloat="true" layoutX="101.0" layoutY="189.0" prefHeight="25.0" prefWidth="270.0" promptText="First Name" unFocusColor="#48bf84" />
+                  <JFXTextField fx:id="idText" focusColor="#63ffb1" labelFloat="true" layoutX="101.0" layoutY="115.0" promptText="ID" unFocusColor="#48bf84" />
+                  <Label layoutX="101.0" layoutY="151.0" text="Please, choose a ID that you can remember, as it is essential for logging in" textFill="#1e1e24" />
+                  <JFXButton id="#button" fx:id="createAccBtn" layoutX="501.0" layoutY="387.0" onAction="#createAccBtnAction" prefHeight="26.0" prefWidth="109.0" style="-fx-background-radius: 30; -fx-background-color: #48BF84; -fx-border-radius: 30; -fx-border-color: #2A4747; -fx-cursor: HAND;" stylesheets="@../stylesheet.css" text="Create Account">
+                     <tooltip>
+                        <Tooltip text="Empty Tooltip" />
+                     </tooltip>
+                  </JFXButton>
+                  <Label layoutX="101.0" layoutY="396.0" text="By creating the account, you hereby agree to the terms and conditions." textFill="#1e1e24" />
+                  <Label layoutX="244.0" layoutY="447.0" text="Already have an account? " textFill="#1e1e24">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="loginLbl" layoutX="432.0" layoutY="447.0" style="-fx-cursor: HAND;" text="Login" textFill="#48bf84">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+      <Circle fx:id="closeAppBtn" fill="#f86e72" layoutX="1001.0" layoutY="23.0" onMouseClicked="#closeAppBtnOnClick" radius="9.0" stroke="BLACK" strokeType="INSIDE" style="-fx-cursor: HAND;" />
+      <Circle fx:id="minimizeBtn" fill="#48bf84" layoutX="973.0" layoutY="23.0" onMouseClicked="#minimizeBtnOnClick" radius="9.0" stroke="BLACK" strokeType="INSIDE" style="-fx-cursor: HAND;" />
+   </children>
+</AnchorPane>
