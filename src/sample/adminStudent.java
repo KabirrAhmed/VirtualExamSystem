@@ -26,8 +26,6 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 
-
-
 public class adminStudent implements Initializable {
 
     public Label courseIdText;
@@ -37,10 +35,12 @@ public class adminStudent implements Initializable {
     public JFXButton insertData;
     public JFXButton deleteData;
     public JFXButton editData;
-    public Label courseText;
-    public Label nameText;
+    public JFXTextField fNameText;
     public JFXButton backBtn;
     public ImageView searchButton;
+    public JFXTextField lNameText;
+    public JFXTextField regDate;
+    public JFXTextField passwordText;
 
     int quizId = 3, studentId;
 
@@ -124,7 +124,6 @@ public class adminStudent implements Initializable {
     private ObservableList<dataModel> dataModels;
 
 
-
     public void insertDataAction(ActionEvent actionEvent) {
         deleteData();
         insertData();
@@ -136,9 +135,8 @@ public class adminStudent implements Initializable {
         }
     }
 
-    public void editDataAction(ActionEvent actionEvent) {
-        deleteData();
-        insertData();
+    public void editDataAction(ActionEvent actionEvent) throws SQLException {
+        updateData();
         buildData();
         try {
             popupTick("Data Updated Successfully" , "" , false, false);
@@ -172,7 +170,9 @@ public class adminStudent implements Initializable {
     public void deleteData(){
         try{
             Statement state = connection.createStatement();
-            String query = "DELETE FROM `database1`.`result` WHERE quiz_idquiz = "+Integer.parseInt(courseIdText.getText())+" AND student_idStudent = "+Integer.parseInt(idText.getText())+";\n";
+            String query = "DELETE FROM studentmanagementsystem.student_has_course WHERE idStudent = "+Integer.parseInt(idText.getText())+";";
+            state.executeUpdate(query);//EXECUTES QUERY
+            query = "DELETE FROM studentmanagementsystem.student WHERE idStudent = "+Integer.parseInt(idText.getText())+";";
             state.executeUpdate(query);//EXECUTES QUERY
         }
         catch(Exception e){
@@ -192,7 +192,7 @@ public class adminStudent implements Initializable {
             }
             else{
                 Statement state = connection.createStatement();
-                String query = "INSERT INTO `studentmanagementsystem`.`student` (`quizResult`, `quiz_idquiz`, `student_idStudent`) VALUES ('"+Integer.parseInt(scoreText.getText())+"','"+Integer.parseInt(courseIdText.getText())+"','"+Integer.parseInt(idText.getText())+"');\n";
+                String query = " insert into studentmanagementsystem.student (idStudent,first_name, last_name,gpa, registration_date, passwordStudent) values ("+Integer.parseInt(idText.getText())+",\""+ fNameText.getText()+"\",\""+lNameText.getText()+"\","+(scoreText.getText())+",'"+regDate.getText()+"','"+passwordText.getText()+"');";
                 state.executeUpdate(query);//EXECUTES QUERY
             }
         } catch (SQLException throwables) {
@@ -201,15 +201,29 @@ public class adminStudent implements Initializable {
 
     }
 
+    public void updateData() throws SQLException {
+        Statement state = connection.createStatement();
+        String query = "update studentmanagementsystem.student set "
+                +"first_name = '"+fNameText.getText()+"', last_name='"+lNameText.getText()+"', registration_date='"+regDate.getText()+"', passwordStudent = '"+passwordText.getText()+"',gpa="+(scoreText.getText())+" where IdStudent="+Integer.parseInt(idText.getText())+";";
+        state.executeUpdate(query);//EXECUTES QUERY
+        if(checkIfRecordExists()){
+
+        }
+        else{
+            System.out.println("NO");
+        }
+    }
 
     public void events(){
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
-                nameText.setText("Name: "+dataModel1.getName());
+                fNameText.setText(dataModel1.getFirstName());
+                lNameText.setText(dataModel1.getLastName());
+                passwordText.setText(dataModel1.getPassword());
+                regDate.setText(dataModel1.getRegDate());
                 idText.setText(String.valueOf(+dataModel1.getStudentId()));
                 scoreText.setText(String.valueOf(+dataModel1.getGpa()));
             }
-
         }
     }
     public boolean checkIfRecordExists() throws SQLException {
