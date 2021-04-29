@@ -69,7 +69,7 @@ public class loginHomepage implements Initializable {
                     Stage stage = (Stage) login.getScene().getWindow();
                     stage.hide();
                     s.setScene(sc);
-                    s.setTitle("Welcome, admin");
+                    s.setTitle("Welcome, teacher");
                     s.show();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
@@ -86,7 +86,7 @@ public class loginHomepage implements Initializable {
             student st = new student(password, id);
             if(st.login()){
                 try {
-                    FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/studentHomepage.fxml"));
+                    FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/studentHomepage1.fxml"));
                     Parent root = fm.load();
                     studentHomepage stH = fm.getController();//Create object of Second class and get its instance by calling method getController
                     stH.setStudentId(id);

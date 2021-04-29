@@ -46,7 +46,8 @@ public class student {
                 result = true;}
         }
 
-        if(result){return true;}
+        if(result){
+            return true;}
         else{return false;}
     }
 }
