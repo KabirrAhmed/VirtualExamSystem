@@ -63,9 +63,8 @@ public class StudentCourse implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
-        colId.setCellValueFactory(new PropertyValueFactory<>("Student ID"));
-        colCourseID.setCellValueFactory(new PropertyValueFactory<>("Course ID"));
-        colCourseTitle.setCellValueFactory(new PropertyValueFactory<>("Course Title"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        colCourseID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
         //colPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
         //colRegDate.setCellValueFactory(new PropertyValueFactory<>("regDate"));
         //colGpa.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
@@ -98,8 +97,7 @@ public class StudentCourse implements Initializable {
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
                 dm.setStudentId(Integer.parseInt(rs.getString("idstudent")));
-                dm.setCourseID(Integer.parseInt(rs.getString("course_id"));
-                dm.setCourseTitle(rs.getString("course_title"));
+                dm.setCourseId(Integer.parseInt(rs.getString("course_id")));
                 //dm.setGpa(Float.parseFloat(rs.getString("gpa")));
                 //dm.setRegDate(rs.getString("registration_date"));
                 //dm.setPassword(rs.getString("passwordStudent"));
