@@ -78,7 +78,8 @@ public class dataModel {
     private SimpleStringProperty regDate;
     private SimpleStringProperty firstName;
     private SimpleStringProperty password;
-
+    private SimpleStringProperty course_title;
+    private SimpleIntegerProperty course_id;
 
 
     public dataModel() {
@@ -93,6 +94,8 @@ public class dataModel {
         this.firstName = new SimpleStringProperty(firstName);
         this.regDate = new SimpleStringProperty(regDate);
         this.password = new SimpleStringProperty(password);
+        this.course_id = new SimpleIntegerProperty(course_id);
+
     }
 
 
@@ -170,4 +173,11 @@ public class dataModel {
         this.name = new SimpleStringProperty(name);
     }
 
+    public void setCourseID(int course_id) {
+        this.course_id  = new SimpleIntegerProperty(course_id);
+    }
+
+    public void setCourseTitle(String course_title) {
+        this.course_title = new SimpleStringProperty(course_title);
+    }
 }

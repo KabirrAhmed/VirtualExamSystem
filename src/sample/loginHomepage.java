@@ -86,9 +86,9 @@ public class loginHomepage implements Initializable {
             student st = new student(password, id);
             if(st.login()){
                 try {
-                    FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/studentHomepage1.fxml"));
+                    FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentHomepage1.fxml"));
                     Parent root = fm.load();
-                    studentHomepage stH = fm.getController();//Create object of Second class and get its instance by calling method getController
+                    StudentHomepage1 stH = fm.getController();//Create object of Second class and get its instance by calling method getController
                     stH.setStudentId(id);
                     Stage s =new Stage();
                     Scene sc = new Scene(root);

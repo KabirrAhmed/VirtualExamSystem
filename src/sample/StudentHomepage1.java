@@ -33,6 +33,8 @@ public class StudentHomepage1 {
     connectivity conn = new connectivity();
     Connection connection;
     PreparedStatement ps = null;
+    private int studentId;
+
     {
         try {
             connection = conn.db_connection();
@@ -44,6 +46,11 @@ public class StudentHomepage1 {
     @FXML
     void initialize() throws SQLException {
         initializeLabels();
+    }
+
+    public void setStudentId(int studentId){
+        this.studentId = studentId;
+        //lblWelc.setText("Welcome, " + String.valueOf(studentId));
     }
 
     public void backOnClick(ActionEvent actionEvent) {
@@ -65,7 +72,7 @@ public class StudentHomepage1 {
 
     public void courseOnClick(ActionEvent actionEvent) {
         try {
-            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentHomepage.fxml"));
+            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentCourse.fxml"));
             Parent root = fm.load();
             Stage s = new Stage();
             Scene sc = new Scene(root);
