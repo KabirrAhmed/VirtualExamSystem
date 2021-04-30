@@ -48,13 +48,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/sample" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mysql-connector-java-8.0.20.jar" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="sample" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\pc sweet\Documents\GitHub\VirtualExamSystem\src\FxmlFiles" />
       <recent name="C:\Users\pc sweet\Documents\GitHub\VirtualExamSystem\src\sample" />
     </key>
   </component>
@@ -115,44 +119,46 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="296" y="30" width="1089" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619202404340">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="370" y="38" width="1089" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619797378793">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="296" y="30" width="1089" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1619202404340" />
+    <state x="370" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619797378793" />
     <state x="718" y="162" key="#com.intellij.ide.util.MemberChooser" timestamp="1619522430338">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1619290348906" />
     <state x="718" y="162" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1619522430338" />
-    <state x="473" y="154" key="FileChooserDialogImpl" timestamp="1619202152063">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="591" y="194" key="FileChooserDialogImpl" timestamp="1619806797443">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="473" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1619202152063" />
-    <state width="1493" height="231" key="GridCell.Tab.0.bottom" timestamp="1619635039855">
+    <state x="591" y="194" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1619806797443" />
+    <state width="1493" height="231" key="GridCell.Tab.0.bottom" timestamp="1619635613437">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="231" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1619635039855" />
+    <state width="1493" height="231" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1619635613437" />
     <state width="1877" height="298" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619549224018" />
-    <state width="1493" height="231" key="GridCell.Tab.0.center" timestamp="1619635039854">
+    <state width="1493" height="231" key="GridCell.Tab.0.center" timestamp="1619635613437">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="231" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1619635039854" />
+    <state width="1493" height="231" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1619635613437" />
     <state width="1877" height="298" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619549224017" />
-    <state width="1493" height="231" key="GridCell.Tab.0.left" timestamp="1619635039854">
+    <state width="1493" height="231" key="GridCell.Tab.0.left" timestamp="1619635613437">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="231" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1619635039854" />
+    <state width="1493" height="231" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1619635613437" />
     <state width="1877" height="298" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619549224017" />
-    <state width="1493" height="231" key="GridCell.Tab.0.right" timestamp="1619635039854">
+    <state width="1493" height="231" key="GridCell.Tab.0.right" timestamp="1619635613437">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="231" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1619635039854" />
+    <state width="1493" height="231" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1619635613437" />
     <state width="1877" height="298" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619549224018" />
-    <state x="311" y="0" key="SettingsEditor" timestamp="1619547434165">
+    <state x="311" y="0" key="SettingsEditor" timestamp="1619806799652">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1619290760283" />
-    <state x="311" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1619547434165" />
+    <state x="311" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1619806799652" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619202286379">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -166,5 +172,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1619546755102" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/VirtualExamSystem$Main.ic" NAME="Main Coverage Results" MODIFIED="1619805234544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/VirtualExamSystem_main$Main.ic" NAME="Main Coverage Results" MODIFIED="1619720828929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
