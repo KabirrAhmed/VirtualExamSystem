@@ -162,7 +162,7 @@ public class StudentCourse implements Initializable {
  */
 
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/adminHomepage.fxml"));
+        FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/studentHomepage1.fxml"));
         Parent root = fm.load();
         Stage s = new Stage();
         Scene sc = new Scene(root);
