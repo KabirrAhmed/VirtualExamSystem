@@ -21,9 +21,11 @@ public class StudentHomepage1 {
     public JFXButton EnrollBtn;
     public JFXButton courseBtn;
     public Label labelStudents;
+    public Label lblWelc;
     public Label labelFaculty;
     public Label labelCourses;
     public JFXButton backBtn;
+
     @FXML
     private ResourceBundle resources;
 
@@ -33,7 +35,7 @@ public class StudentHomepage1 {
     connectivity conn = new connectivity();
     Connection connection;
     PreparedStatement ps = null;
-    private int studentId;
+    int studentId;
 
     {
         try {
@@ -50,12 +52,16 @@ public class StudentHomepage1 {
 
     public void setStudentId(int studentId){
         this.studentId = studentId;
-        //lblWelc.setText("Welcome, " + String.valueOf(studentId));
+        lblWelc.setText("Welcome, " + String.valueOf(studentId));
+    }
+    public int getStudentId(){
+        this.studentId = studentId;
+       return studentId;
     }
 
     public void backOnClick(ActionEvent actionEvent) {
         try {
-            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/loginHomepage.fxml"));
+            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentHomepage1.fxml"));
             Parent root = fm.load();
             Stage s = new Stage();
             Scene sc = new Scene(root);

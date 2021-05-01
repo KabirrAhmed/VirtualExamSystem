@@ -2,7 +2,6 @@ package sample;
 
 import Classes.dataModel;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,11 +9,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -26,7 +23,7 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 
-public class StudentCourse implements Initializable {
+public class TeacherCourse implements Initializable {
 
    // public Label courseIdText;
    // public JFXTextField idText;
@@ -63,7 +60,7 @@ public class StudentCourse implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
-        colId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("teacher_id"));
         colCourseID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
         //colPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
         //colRegDate.setCellValueFactory(new PropertyValueFactory<>("regDate"));
@@ -91,14 +88,14 @@ public class StudentCourse implements Initializable {
 
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
-        StudentHomepage1 st = new StudentHomepage1();
-        System.out.println(st.getStudentId());
+        //StudentHomepage1 st = new StudentHomepage1();
+        //System.out.println(st.getStudentId());
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM student_has_course");;
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM teacher_has_course");;
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
-                dm.setStudentId(Integer.parseInt(rs.getString("idstudent")));
+                dm.setStudentId(Integer.parseInt(rs.getString("teacher_id")));
                 dm.setCourseId(Integer.parseInt(rs.getString("course_id")));
                 //dm.setGpa(Float.parseFloat(rs.getString("gpa")));
                 //dm.setRegDate(rs.getString("registration_date"));

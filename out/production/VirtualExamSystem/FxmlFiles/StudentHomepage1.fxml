@@ -25,6 +25,7 @@
             <children>
                <Button layoutX="6.0" layoutY="524.0" mnemonicParsing="false" />
                <JFXButton fx:id="backBtn" layoutX="95.0" layoutY="432.0" mnemonicParsing="false" onAction="#backOnClick" style="-fx-background-color: grey;" text="Back" textFill="WHITE" />
+               <Label fx:id="lblWelc" layoutX="49.0" layoutY="57.0" prefHeight="17.0" prefWidth="108.0" text="Label" />
             </children></AnchorPane>
       </children>
    </AnchorPane>
