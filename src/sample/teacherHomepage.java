@@ -113,7 +113,7 @@ public class teacherHomepage {
 
     public void InfoOnClick(ActionEvent actionEvent) {
         try {
-            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentInfo.fxml"));
+            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/TeacherInfo.fxml"));
             Parent root = fm.load();
             Stage s = new Stage();
             Scene sc = new Scene(root);

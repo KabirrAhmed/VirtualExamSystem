@@ -156,7 +156,7 @@ public class TeacherStudent implements Initializable {
     }
 
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/adminHomepage.fxml"));
+        FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/teacherHomepage.fxml"));
         Parent root = fm.load();
         Stage s = new Stage();
         Scene sc = new Scene(root);
