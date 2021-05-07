@@ -44,7 +44,7 @@ public class StudentCourse implements Initializable {
     //public JFXTextField regDate;
     //public JFXTextField passwordText;
 
-    int quizId = 3, studentId;
+    int studentId;
 
     public TableView<dataModel> tableView;
     public TableColumn<dataModel, Integer> colId;
@@ -63,8 +63,8 @@ public class StudentCourse implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
-        colId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
-        colCourseID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("idStudent"));
+        colCourseID.setCellValueFactory(new PropertyValueFactory<>("course_title"));
         //colPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
         //colRegDate.setCellValueFactory(new PropertyValueFactory<>("regDate"));
         //colGpa.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
@@ -87,14 +87,19 @@ public class StudentCourse implements Initializable {
 */
     }
 
-
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+        System.out.println("Student ID is "+studentId);
+    }
 
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         StudentHomepage1 st = new StudentHomepage1();
         System.out.println(st.getStudentId());
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM student_has_course");;
+            PreparedStatement ps = connection.prepareStatement("select idStudent, course_title FROM courses \n" +
+                    "inner join student_has_course on ( courses.course_id = student_has_course.course_id)\n" +
+                    "WHERE idStudent = "+studentId+";");;
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();

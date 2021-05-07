@@ -80,12 +80,14 @@ public class StudentHomepage1 {
         try {
             FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentCourse.fxml"));
             Parent root = fm.load();
+            StudentCourse stH = fm.getController();//Create object of Second class and get its instance by calling method getController
+            stH.setStudentId(studentId);
             Stage s = new Stage();
             Scene sc = new Scene(root);
+            s.setScene(sc);
             s.initStyle(StageStyle.UNDECORATED);
             Stage stage = (Stage) courseBtn.getScene().getWindow();
             stage.hide();
-            s.setScene(sc);
             s.setTitle("Welcome, student");
             s.show();
         } catch (Exception e) {
