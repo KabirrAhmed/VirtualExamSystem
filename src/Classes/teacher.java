@@ -30,11 +30,11 @@ public class teacher {
     Connection connection = conn.db_connection();
 
     public boolean login() throws SQLException {
-        PreparedStatement ps = connection.prepareStatement("SELECT * FROM database1.teacher WHERE idTeacher =\"" + id + "\" AND passwordTeacher = \"" + password + "\";");
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM studentmanagementsystem.teacher WHERE teacher_id =\"" + id + "\" AND passwordTeacher = \"" + password + "\";");
         ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
         boolean result = false;
         while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
-            int id = rs.getInt("idTeacher");
+            int id = rs.getInt("teacher_id");
             System.out.println(id);
             String password = rs.getString("passwordTeacher");
             System.out.println(password);
