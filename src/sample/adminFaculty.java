@@ -26,7 +26,7 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 
-public class adminTeacher implements Initializable {
+public class adminFaculty implements Initializable {
 
     public Label courseIdText;
     public JFXTextField idText;
@@ -50,7 +50,6 @@ public class adminTeacher implements Initializable {
     public TableColumn<dataModel, String> colLastName;
     public TableColumn<dataModel, String> colRegDate;
     public TableColumn<dataModel, String> colPassword;
-    public TableColumn<dataModel, Integer> colGpa;
 
     static Connection connection = null;
     static String databaseName = "studentmanagementsystem";
@@ -88,11 +87,11 @@ public class adminTeacher implements Initializable {
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT idteacher, first_name, last_name,  registration_date, passwordTeacher FROM teacher");;
+            PreparedStatement ps = connection.prepareStatement("SELECT teacher_id, first_name, last_name,  registration_date, passwordTeacher FROM teacher");;
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
-                dm.setStudentId(Integer.parseInt(rs.getString("idteacher")));
+                dm.setStudentId(Integer.parseInt(rs.getString("teacher_id")));
                 dm.setFirstName(rs.getString("first_name"));
                 dm.setLastName(rs.getString("last_name"));
                 dm.setRegDate(rs.getString("registration_date"));
@@ -168,9 +167,9 @@ public class adminTeacher implements Initializable {
     public void deleteData(){
         try{
             Statement state = connection.createStatement();
-            String query = "DELETE FROM studentmanagementsystem.student_has_course WHERE idStudent = "+Integer.parseInt(idText.getText())+";";
+            String query = "DELETE FROM studentmanagementsystem.teacher_has_course WHERE teacher_id = "+Integer.parseInt(idText.getText())+";";
             state.executeUpdate(query);//EXECUTES QUERY
-            query = "DELETE FROM studentmanagementsystem.student WHERE idStudent = "+Integer.parseInt(idText.getText())+";";
+            query = "DELETE FROM studentmanagementsystem.teacher WHERE teacher_id = "+Integer.parseInt(idText.getText())+";";
             state.executeUpdate(query);//EXECUTES QUERY
         }
         catch(Exception e){
@@ -190,7 +189,7 @@ public class adminTeacher implements Initializable {
             }
             else{
                 Statement state = connection.createStatement();
-                String query = " insert into studentmanagementsystem.student (idStudent,first_name, last_name,gpa, registration_date, passwordStudent) values ("+Integer.parseInt(idText.getText())+",\""+ fNameText.getText()+"\",\""+lNameText.getText()+"\","+(scoreText.getText())+",'"+regDate.getText()+"','"+passwordText.getText()+"');";
+                String query = " insert into studentmanagementsystem.teacher (teacher_id,first_name, last_name, registration_date, passwordTeacher) values ("+Integer.parseInt(idText.getText())+",\""+ fNameText.getText()+"\",\""+lNameText.getText()+"\",'"+regDate.getText()+"','"+passwordText.getText()+"');";
                 state.executeUpdate(query);//EXECUTES QUERY
             }
         } catch (SQLException throwables) {
@@ -201,8 +200,8 @@ public class adminTeacher implements Initializable {
 
     public void updateData() throws SQLException {
         Statement state = connection.createStatement();
-        String query = "update studentmanagementsystem.student set "
-                +"first_name = '"+fNameText.getText()+"', last_name='"+lNameText.getText()+"', registration_date='"+regDate.getText()+"', passwordStudent = '"+passwordText.getText()+"',gpa="+(scoreText.getText())+" where IdStudent="+Integer.parseInt(idText.getText())+";";
+        String query = "update studentmanagementsystem.teacher set "
+                +"first_name = '"+fNameText.getText()+"', last_name='"+lNameText.getText()+"', registration_date='"+regDate.getText()+"', passwordTeacher = '"+passwordText.getText()+"' where teacher_id="+Integer.parseInt(idText.getText())+";";
         state.executeUpdate(query);//EXECUTES QUERY
         if(checkIfRecordExists()){
 
@@ -220,16 +219,15 @@ public class adminTeacher implements Initializable {
                 passwordText.setText(dataModel1.getPassword());
                 regDate.setText(dataModel1.getRegDate());
                 idText.setText(String.valueOf(+dataModel1.getStudentId()));
-                scoreText.setText(String.valueOf(+dataModel1.getGpa()));
             }
         }
     }
     public boolean checkIfRecordExists() throws SQLException {
-        PreparedStatement ps = connection.prepareStatement("SELECT idstudent  FROM studentmanagementsystem.student\n" +
-                "WHERE idstudent = "+idText.getText()+";");
+        PreparedStatement ps = connection.prepareStatement("SELECT teacher_id  FROM studentmanagementsystem.teacher\n" +
+                "WHERE teacher_id = "+idText.getText()+";");
         ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
         while (rs.next()) {
-            if(rs.getString("idstudent") == idText.getText())
+            if(rs.getString("teacher_id") == idText.getText())
                 return true;
         }
         return false;
