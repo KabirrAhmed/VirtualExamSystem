@@ -45,10 +45,6 @@ public class adminCourse implements Initializable {
     public TableView<dataModel> tableView;
     public TableColumn<dataModel, Integer> colId;
     public TableColumn<dataModel, String> colName;
-    public TableColumn<dataModel, String> colFName;
-    public TableColumn<dataModel, String> colRegDate;
-    public TableColumn<dataModel, String> colPassword;
-    public TableColumn<dataModel, Integer> colFId;
 
     static Connection connection = null;
     static String databaseName = "studentmanagementsystem";
@@ -61,8 +57,6 @@ public class adminCourse implements Initializable {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
         colId.setCellValueFactory(new PropertyValueFactory<>("course_id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("course_title"));
-        colFName.setCellValueFactory(new PropertyValueFactory<>("teacherName"));
-        colFId.setCellValueFactory(new PropertyValueFactory<>("teacher_id"));
         //add your data to the table here.
         tableView.setItems(dataModels);
         try {
@@ -85,17 +79,12 @@ public class adminCourse implements Initializable {
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT courses.course_id,courses.course_title, teacher_has_course.teacher_id, CONCAT(teacher.first_name,' ',teacher.last_name )AS \"Name\"  FROM courses \n" +
-                    "\n" +
-                    "INNER JOIN teacher_has_course on (courses.course_id = teacher_has_course.course_id)\n" +
-                    "INNER JOIN teacher on (teacher.teacher_id = teacher_has_course.teacher_id);");
+            PreparedStatement ps = connection.prepareStatement("SELECT courses.course_id,courses.course_title FROM courses;\n");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
                 dm.setCourseId(Integer.parseInt(rs.getString("course_id")));
                 dm.setCourse_title(rs.getString("course_title"));
-                dm.setTeacherId(Integer.parseInt(rs.getString("teacher_id")));
-                dm.setTeacherName(rs.getString("Name"));
                 dataModels.add(dm);
             }
             tableView.setItems(dataModels);
@@ -132,7 +121,7 @@ public class adminCourse implements Initializable {
         }
     }
 
-    public void editDataAction(ActionEvent actionEvent) throws SQLException {
+    public void editDataAction(ActionEvent actionEvent) throws SQLException, IOException {
         updateData();
         buildData();
         try {
@@ -189,37 +178,25 @@ public class adminCourse implements Initializable {
                     System.out.println(e);
                 }
             }
-            else if(checkIfTeacherExists()){
-                try{
-                    popupCross("Course Record already Exists", "", false, false);
-                }
-                catch(Exception e){
-                    System.out.println(e);
-                }
-            }
             else{
                 Statement state = connection.createStatement();
                 String query = " insert into studentmanagementsystem.courses (course_id,course_title) values ("+Integer.parseInt(idText.getText())+",\""+ courseNameText.getText()+"\");";
-                state.executeUpdate(query);//EXECUTES QUERY
-                query = " insert into studentmanagementsystem.teacher_has_course (teacher_id,course_id) values ("+Integer.parseInt(fIdText.getText())+","+ idText.getText()+");";
                 state.executeUpdate(query);//EXECUTES QUERY
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
     }
 
-    public void updateData() throws SQLException {
-        Statement state = connection.createStatement();
-        String query = "update studentmanagementsystem.student set "
-                +"first_name = '"+ courseNameText.getText()+"', last_name='"+ fNameText.getText()+"', registration_date='"+regDate.getText()+"', passwordStudent = '"+passwordText.getText()+"',gpa="+(fIdText.getText())+" where IdStudent="+Integer.parseInt(idText.getText())+";";
-        state.executeUpdate(query);//EXECUTES QUERY
+    public void updateData() throws SQLException, IOException {
         if(checkIfRecordExists()){
-
+            Statement state = connection.createStatement();
+            String query = "update studentmanagementsystem.courses set "
+                    +"course_title = '"+ courseNameText.getText()+" where course_id="+Integer.parseInt(idText.getText())+";";
+            state.executeUpdate(query);//EXECUTES QUERY
         }
         else{
-            System.out.println("NO");
+            popupCross("Record does not exist.", "", false , false);
         }
     }
 
@@ -227,9 +204,7 @@ public class adminCourse implements Initializable {
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
                 courseNameText.setText(dataModel1.getCourse_title());
-                fNameText.setText(dataModel1.getTeacherName());
                 idText.setText(String.valueOf(dataModel1.getCourse_id()));
-                fIdText.setText(String.valueOf(dataModel1.getTeacher_id()));
             }
         }
     }

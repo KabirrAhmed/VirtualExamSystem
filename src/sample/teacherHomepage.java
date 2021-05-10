@@ -52,10 +52,8 @@ public class teacherHomepage {
 
     public void setTeacherId(int teacher_id){
         this.teacher_id = teacher_id;
-        lblWelc.setText("Welcome, " + String.valueOf(teacher_id));
-    }
+        System.out.println("teacher id issssss"+this.teacher_id);    }
     public int getTeacher_id(){
-        this.teacher_id = teacher_id;
         return teacher_id;
     }
 
@@ -81,13 +79,17 @@ public class teacherHomepage {
         try {
             FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/TeacherCourse.fxml"));
             Parent root = fm.load();
-            Stage s = new Stage();
+            TeacherCourse tc = fm.getController();
+            tc.setTeacherId(teacher_id);
+            System.out.println("Teacher Id is" +getTeacher_id());
+            Stage s =new Stage();
             Scene sc = new Scene(root);
+            s.setScene(sc);
             s.initStyle(StageStyle.UNDECORATED);
             Stage stage = (Stage) courseBtn.getScene().getWindow();
             stage.hide();
-            s.setScene(sc);
-            s.setTitle("Welcome, teacher");
+
+            s.setTitle("Welcome, student.");
             s.show();
         } catch (Exception e) {
             System.out.println(e.getMessage());

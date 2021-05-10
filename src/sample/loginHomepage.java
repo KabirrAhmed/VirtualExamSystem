@@ -63,6 +63,8 @@ public class loginHomepage implements Initializable {
                 try {
                     FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/teacherHomepage.fxml"));
                     Parent root = fm.load();
+                    teacherHomepage th = fm.getController();
+                    th.setTeacherId(id);
                     Stage s = new Stage();
                     Scene sc = new Scene(root);
                     s.initStyle(StageStyle.UNDECORATED);

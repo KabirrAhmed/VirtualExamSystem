@@ -41,7 +41,18 @@ public class TeacherCourse implements Initializable {
     //public JFXTextField regDate;
     //public JFXTextField passwordText;
 
-    int quizId = 3, studentId;
+    int quizId = 3;
+
+    public int getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+        System.out.println("st teacher"+teacherId);
+    }
+
+    int teacherId;
 
     public TableView<dataModel> tableView;
     public TableColumn<dataModel, Integer> colId;
