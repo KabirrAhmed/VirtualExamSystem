@@ -28,17 +28,13 @@ import java.util.ResourceBundle;
 
 public class adminCourse implements Initializable {
 
-    public Label courseIdText;
     public JFXTextField idText;
-    public JFXTextField fIdText;
-
     public JFXButton insertData;
     public JFXButton deleteData;
     public JFXButton editData;
     public JFXTextField courseNameText;
     public JFXButton backBtn;
     public ImageView searchButton;
-    public JFXTextField fNameText;
 
     int quizId = 3, studentId;
 
@@ -109,16 +105,11 @@ public class adminCourse implements Initializable {
 
     private ObservableList<dataModel> dataModels;
 
-
     public void insertDataAction(ActionEvent actionEvent) {
         deleteData();
         insertData();
         buildData();
-        try {
-            popupTick("Data Inserted Successfully" , "" , false, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void editDataAction(ActionEvent actionEvent) throws SQLException, IOException {
@@ -156,11 +147,11 @@ public class adminCourse implements Initializable {
     public void deleteData(){
         try{
             Statement state = connection.createStatement();
-            String query = "DELETE FROM studentmanagementsystem.student_has_course WHERE course_id = "+Integer.parseInt(idText.getText())+";";
+            String query = "DELETE FROM studentmanagementsystem.student_has_course WHERE student_has_course.course_id = "+Integer.parseInt(idText.getText())+";";
             state.executeUpdate(query);//EXECUTES QUERY
-            query = "DELETE FROM studentmanagementsystem.teacher_has_course WHERE course_id = "+Integer.parseInt(idText.getText())+";";
+            query = "DELETE FROM studentmanagementsystem.teacher_has_course WHERE teacher_has_course.course_id = "+Integer.parseInt(idText.getText())+";";
             state.executeUpdate(query);//EXECUTES QUERY
-            query = "DELETE FROM studentmanagementsystem.student WHERE course_id = "+Integer.parseInt(idText.getText())+";";
+            query = "DELETE FROM studentmanagementsystem.courses WHERE courses.course_id = "+Integer.parseInt(idText.getText())+";";
             state.executeUpdate(query);//EXECUTES QUERY
         }
         catch(Exception e){
@@ -180,8 +171,13 @@ public class adminCourse implements Initializable {
             }
             else{
                 Statement state = connection.createStatement();
-                String query = " insert into studentmanagementsystem.courses (course_id,course_title) values ("+Integer.parseInt(idText.getText())+",\""+ courseNameText.getText()+"\");";
+                String query = " insert into studentmanagementsystem.courses (courses.course_id,courses.course_title) values ("+Integer.parseInt(idText.getText())+",\""+ courseNameText.getText()+"\");";
                 state.executeUpdate(query);//EXECUTES QUERY
+                try {
+                    popupTick("Data Inserted Successfully" , "" , false, false);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -192,14 +188,13 @@ public class adminCourse implements Initializable {
         if(checkIfRecordExists()){
             Statement state = connection.createStatement();
             String query = "update studentmanagementsystem.courses set "
-                    +"course_title = '"+ courseNameText.getText()+" where course_id="+Integer.parseInt(idText.getText())+";";
+                    +"course_title = \""+ courseNameText.getText()+"\" where courses.course_id="+Integer.parseInt(idText.getText())+";";
             state.executeUpdate(query);//EXECUTES QUERY
         }
         else{
             popupCross("Record does not exist.", "", false , false);
         }
     }
-
     public void events(){
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
@@ -210,23 +205,14 @@ public class adminCourse implements Initializable {
     }
     public boolean checkIfRecordExists() throws SQLException {
         PreparedStatement ps = connection.prepareStatement("SELECT course_id  FROM studentmanagementsystem.courses\n" +
-                "WHERE course_id = "+idText.getText()+";");
+                "WHERE courses.course_id = "+idText.getText()+";");
         ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
         while (rs.next()) {
-            if(rs.getString("course_id") == idText.getText())
-                return true;
+            if(Integer.parseInt(rs.getString("course_id")) == Integer.parseInt(idText.getText())){
+                System.out.println("Record does exist");
+                return true;}
         }
-        return false;
-    }
-
-    public boolean checkIfTeacherExists() throws SQLException {
-        PreparedStatement ps = connection.prepareStatement("SELECT teacher_id  FROM studentmanagementsystem.teacher\n" +
-                "WHERE teacher_id = "+fIdText.getText()+";");
-        ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
-        while (rs.next()) {
-            if(rs.getString("teacher_id") == idText.getText())
-                return true;
-        }
+        System.out.println("Record does not exist");
         return false;
     }
 
