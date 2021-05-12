@@ -26,10 +26,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf04a8ab-b795-4695-86b3-eef3167eeff4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/FxmlFiles/StudentInfo.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/StudentInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/TeacherInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfoenix_9_0_10.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/jfoenix_9_0_10.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_20.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_20.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VirtualExamSystem/FxmlFiles/TeacherInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VirtualExamSystem/FxmlFiles/TeacherInfo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VirtualExamSystem/sample/StudentHomepage1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VirtualExamSystem/sample/StudentHomepage1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VirtualExamSystem/sample/TeacherCourse.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VirtualExamSystem/sample/TeacherCourse.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VirtualExamSystem/sample/TeacherStudent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VirtualExamSystem/sample/TeacherStudent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VirtualExamSystem/sample/teacherHomepage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VirtualExamSystem/sample/teacherHomepage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FxmlFiles/TeacherInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/FxmlFiles/TeacherInfo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/StudentHomepage1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/StudentHomepage1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/TeacherCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TeacherCourse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/TeacherStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TeacherStudent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/teacherHomepage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/teacherHomepage.java" afterDir="false" />
     </list>
@@ -55,7 +65,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/FxmlFiles" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -65,6 +75,7 @@
       <recent name="sample" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Habiba\4th Sem\Database Lab\project\Final\FINAL_FINAL\VirtualExamSystem\src\FxmlFiles" />
       <recent name="C:\Users\pc sweet\Documents\GitHub\VirtualExamSystem\src\FxmlFiles" />
       <recent name="C:\Users\pc sweet\Documents\GitHub\VirtualExamSystem\src\sample" />
     </key>
@@ -136,36 +147,45 @@
     </state>
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1620668664546" />
     <state x="718" y="162" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1620500649425" />
-    <state x="591" y="194" key="FileChooserDialogImpl" timestamp="1620501190971">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1620757805724">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="421" y="136" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1619808519285" />
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1620757805724" />
+    <state x="421" y="136" key="FileChooserDialogImpl" timestamp="1620669274640">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="421" y="136" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1620669274640" />
     <state x="473" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1619202152063" />
     <state x="591" y="194" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1620501190971" />
-    <state width="1493" height="195" key="GridCell.Tab.0.bottom" timestamp="1620672538924">
-      <screen x="0" y="0" width="1536" height="824" />
+
+    <state width="1323" height="2" key="GridCell.Tab.0.bottom" timestamp="1620758125055">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620672538924" />
+    <state width="1323" height="2" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1620758125055" />
+    <state width="1493" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620668833716" />
     <state width="1877" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1620665975524" />
-    <state width="1493" height="195" key="GridCell.Tab.0.center" timestamp="1620672538924">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1323" height="2" key="GridCell.Tab.0.center" timestamp="1620758125055">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1620672538924" />
+    <state width="1323" height="2" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1620758125055" />
+    <state width="1493" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1620668833716" />
     <state width="1877" height="263" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1620665975523" />
-    <state width="1493" height="195" key="GridCell.Tab.0.left" timestamp="1620672538924">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1323" height="2" key="GridCell.Tab.0.left" timestamp="1620758125055">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1620672538924" />
+    <state width="1323" height="2" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1620758125055" />
+    <state width="1493" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1620668833716" />
     <state width="1877" height="263" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1620665975523" />
-    <state width="1493" height="195" key="GridCell.Tab.0.right" timestamp="1620672538924">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1323" height="2" key="GridCell.Tab.0.right" timestamp="1620758125055">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1620672538924" />
+    <state width="1323" height="2" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1620758125055" />
+    <state width="1493" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1620668833716" />
     <state width="1877" height="263" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1620665975524" />
-    <state x="311" y="0" key="SettingsEditor" timestamp="1620665896117">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="221" y="0" key="SettingsEditor" timestamp="1620669276836">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="221" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1619808526372" />
+    <state x="221" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1620669276836" />
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1619290760283" />
     <state x="311" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1620665896117" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619202286379">
@@ -183,6 +203,7 @@
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1620488504020" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/StudentCourse_class$Main.ic" NAME="Main Coverage Results" MODIFIED="1620666742970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/VirtualExamSystem$Main.ic" NAME="Main Coverage Results" MODIFIED="1619805234544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/VirtualExamSystem_main$Main.ic" NAME="Main Coverage Results" MODIFIED="1619720828929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>

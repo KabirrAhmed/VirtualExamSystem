@@ -89,7 +89,7 @@ public class TeacherStudent implements Initializable {
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT idstudent, first_name, last_name, gpa, registration_date FROM student");;
+            PreparedStatement ps = connection.prepareStatement("SELECT idstudent, first_name, last_name, gpa, registration_date FROM student where idStudent = "+studentId+";");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();

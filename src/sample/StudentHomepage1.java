@@ -117,6 +117,8 @@ public class StudentHomepage1 {
         try {
             FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentInfo.fxml"));
             Parent root = fm.load();
+            StudentInfo stH = fm.getController();//Create object of Second class and get its instance by calling method getController
+            stH.setStudentId(studentId);
             Stage s = new Stage();
             Scene sc = new Scene(root);
             s.initStyle(StageStyle.UNDECORATED);

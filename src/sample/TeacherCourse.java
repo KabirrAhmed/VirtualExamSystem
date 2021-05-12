@@ -49,7 +49,8 @@ public class TeacherCourse implements Initializable {
 
     public void setTeacherId(int teacherId) {
         this.teacherId = teacherId;
-        System.out.println("st teacher"+teacherId);
+        System.out.println("st teacher"+this.teacherId);
+        buildData();
     }
 
     int teacherId;
@@ -101,8 +102,11 @@ public class TeacherCourse implements Initializable {
         dataModels = FXCollections.observableArrayList();
         //StudentHomepage1 st = new StudentHomepage1();
         //System.out.println(st.getStudentId());
+        teacherHomepage th = new teacherHomepage();
+        System.out.println(teacherId);
+        System.out.println("inside fun"+th.getTeacher_id());
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM teacher_has_course");;
+            PreparedStatement ps = connection.prepareStatement("SELECT teacher_id,course_id FROM teacher_has_course WHERE teacher_id = "+teacherId+";");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
@@ -171,7 +175,7 @@ public class TeacherCourse implements Initializable {
 
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/teacherHomepage.fxml"));
-        Parent root = fm.load();
+       Parent root = fm.load();
         Stage s = new Stage();
         Scene sc = new Scene(root);
         Stage stage = (Stage) backBtn.getScene().getWindow();
@@ -180,6 +184,8 @@ public class TeacherCourse implements Initializable {
         s.setScene(sc);
         s.setTitle("Welcome, admin");
         s.show();
+
+
     }
     /*
     public void deleteData(){
@@ -235,6 +241,7 @@ public class TeacherCourse implements Initializable {
     public void events(){
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
+
                 //fNameText.setText(dataModel1.getFirstName());
                 //lNameText.setText(dataModel1.getLastName());
                 //passwordText.setText(dataModel1.getPassword());

@@ -49,9 +49,10 @@ public class teacherHomepage {
     void initialize() throws SQLException {
         initializeLabels();
     }
-
     public void setTeacherId(int teacher_id){
         this.teacher_id = teacher_id;
+        lblWelc.setText("Welcome, " + String.valueOf(teacher_id));
+
         System.out.println("teacher id issssss"+this.teacher_id);    }
     public int getTeacher_id(){
         return teacher_id;
@@ -117,6 +118,8 @@ public class teacherHomepage {
         try {
             FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/TeacherInfo.fxml"));
             Parent root = fm.load();
+            TeacherInfo tc = fm.getController();
+            tc.setTeacherId(teacher_id);
             Stage s = new Stage();
             Scene sc = new Scene(root);
             s.initStyle(StageStyle.UNDECORATED);
