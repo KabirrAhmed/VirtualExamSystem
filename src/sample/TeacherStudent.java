@@ -42,7 +42,7 @@ public class TeacherStudent implements Initializable {
     public JFXTextField regDate;
     public JFXTextField passwordText;
 
-    int quizId = 3, studentId;
+    int quizId = 3, teacherId;
 
     public TableView<dataModel> tableView;
     public TableColumn<dataModel, Integer> colId;
@@ -89,14 +89,13 @@ public class TeacherStudent implements Initializable {
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT idstudent, first_name, last_name, gpa, registration_date FROM student where idStudent = "+studentId+";");
+            PreparedStatement ps = connection.prepareStatement("SELECT idstudent, first_name, last_name, registration_date FROM student where idStudent = "+ teacherId +";");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
                 dm.setStudentId(Integer.parseInt(rs.getString("idstudent")));
                 dm.setFirstName(rs.getString("first_name"));
                 dm.setLastName(rs.getString("last_name"));
-                dm.setGpa(Float.parseFloat(rs.getString("gpa")));
                 dm.setRegDate(rs.getString("registration_date"));
                // dm.setPassword(rs.getString("passwordStudent"));
                 dataModels.add(dm);
@@ -158,6 +157,8 @@ public class TeacherStudent implements Initializable {
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/teacherHomepage.fxml"));
         Parent root = fm.load();
+        teacherHomepage tH = fm.getController();
+        tH.setTeacherId(teacherId);
         Stage s = new Stage();
         Scene sc = new Scene(root);
         Stage stage = (Stage) backBtn.getScene().getWindow();
