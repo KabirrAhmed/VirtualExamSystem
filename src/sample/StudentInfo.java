@@ -49,13 +49,14 @@ public class StudentInfo {
 
     @FXML
     void initialize() throws SQLException {
-        initializeLabels();
     }
 
     public void backOnClick(ActionEvent actionEvent) {
         try {
             FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentHomepage1.fxml"));
             Parent root = fm.load();
+            StudentHomepage1 stH = fm.getController();//Create object of Second class and get its instance by calling method getController
+            stH.setStudentId(studentid);
             Stage s = new Stage();
             Scene sc = new Scene(root);
             s.initStyle(StageStyle.UNDECORATED);
@@ -70,8 +71,6 @@ public class StudentInfo {
     }
 
     public void initializeLabels() throws SQLException {
-        System.out.println("Successful2");
-        System.out.println(studentid);
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT idStudent FROM student where idStudent = "+studentid+";");
         while ( rs.next() ) {
@@ -93,9 +92,5 @@ public class StudentInfo {
             String date = rs4.getString(1);
             datelabel.setText(String.valueOf(date));
         }
-        ResultSet rs5 = stmt.executeQuery("SELECT gpa FROM student where idStudent = "+studentid+";");
-        while ( rs5.next() ) {
-            float gpa1 = rs5.getFloat(1);
-            grade.setText(String.valueOf(gpa1));
     }
-}}
+}

@@ -58,6 +58,8 @@ public class TeacherInfo {
         try {
             FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/teacherHomepage.fxml"));
             Parent root = fm.load();
+            teacherHomepage tH = fm.getController();
+            tH.setTeacherId(getTeacherId());
             Stage s = new Stage();
             Scene sc = new Scene(root);
             s.initStyle(StageStyle.UNDECORATED);

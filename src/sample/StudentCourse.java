@@ -46,6 +46,11 @@ public class StudentCourse implements Initializable {
 
     int studentId;
 
+    public int getStudentId(){
+        this.studentId = studentId;
+        return studentId;
+    }
+
     public TableView<dataModel> tableView;
     public TableColumn<dataModel, Integer> colId;
     public TableColumn<dataModel, Integer> colCourseID;

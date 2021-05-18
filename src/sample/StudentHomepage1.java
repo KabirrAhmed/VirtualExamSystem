@@ -61,7 +61,7 @@ public class StudentHomepage1 {
 
     public void backOnClick(ActionEvent actionEvent) {
         try {
-            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentHomepage1.fxml"));
+            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/loginHomepage.fxml"));
             Parent root = fm.load();
             Stage s = new Stage();
             Scene sc = new Scene(root);
@@ -98,7 +98,7 @@ public class StudentHomepage1 {
 
     public void EnrollOnClick(ActionEvent actionEvent) {
         try {
-            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentEnroll.fxml"));
+            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/studentEnroll.fxml"));
             Parent root = fm.load();
             Stage s = new Stage();
             Scene sc = new Scene(root);
@@ -132,7 +132,6 @@ public class StudentHomepage1 {
         }
     }
     public void initializeLabels() throws SQLException {
-        System.out.println("Successful");
         Statement state = connection.createStatement();
 /*
         Statement stmt = connection.createStatement();
