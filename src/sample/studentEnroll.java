@@ -131,7 +131,7 @@ public class studentEnroll implements Initializable {
 
     public void deleteDataAction(ActionEvent actionEvent) {
         try {
-            checkIfStudentIsEnrolled();
+            studentIsEnrolled();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -168,7 +168,7 @@ public class studentEnroll implements Initializable {
 
     public void enrollCourse(){
         try {
-            if(checkIfStudentIsEnrolled()){
+            if(studentIsEnrolled()){
                 try{
                     popupCross("Course Record already Exists", "", false, false);
                 }
@@ -178,7 +178,7 @@ public class studentEnroll implements Initializable {
             }
             else{
                 Statement state = connection.createStatement();
-                String query = " insert into studentmanagementsystem.student_has_course (student_has_course.course_id,student_has_course.idStudent) values ("+Integer.parseInt(idText.getText())+","+ studentId+");";
+                String query = " insert into studentmanagementsystem.student_has_course (student_has_course.course_id, student_has_course.idStudent) values ("+Integer.parseInt(idText.getText())+","+ studentId+");";
                 state.executeUpdate(query);//EXECUTES QUERY
                 try {
                     popupTick("Data Inserted Successfully" , "" , false, false);
@@ -197,7 +197,7 @@ public class studentEnroll implements Initializable {
     }
 
     public void updateData() throws SQLException, IOException {
-        if(checkIfStudentIsEnrolled()){
+        /*if(studentIsEnrolled()){
             Statement state = connection.createStatement();
             String query = "update studentmanagementsystem.courses set "
                     +"course_title = \""+ courseNameText.getText()+"\" where courses.course_id="+Integer.parseInt(idText.getText())+";";
@@ -205,7 +205,7 @@ public class studentEnroll implements Initializable {
         }
         else{
             popupCross("Record does not exist.", "", false , false);
-        }
+        }*/
     }
     public void events(){
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
@@ -215,7 +215,7 @@ public class studentEnroll implements Initializable {
             }
         }
     }
-    public boolean checkIfStudentIsEnrolled() throws SQLException {
+    public boolean studentIsEnrolled() throws SQLException {
         PreparedStatement ps = connection.prepareStatement("SELECT course_id  FROM studentmanagementsystem.student_has_course\n" +
                 "WHERE student_has_course.idStudent = "+studentId+";");
         ResultSet rs = ps.executeQuery();   //EXECUTES QUERY

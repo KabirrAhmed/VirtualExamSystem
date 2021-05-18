@@ -100,6 +100,8 @@ public class StudentHomepage1 {
         try {
             FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/studentEnroll.fxml"));
             Parent root = fm.load();
+            studentEnroll sE = fm.getController();
+            sE.setStudentId(studentId);
             Stage s = new Stage();
             Scene sc = new Scene(root);
             s.initStyle(StageStyle.UNDECORATED);

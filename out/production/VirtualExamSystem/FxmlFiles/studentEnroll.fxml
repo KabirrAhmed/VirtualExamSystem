@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1024.0" style="-fx-background-color: #1E1E24;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.adminCourse">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1024.0" style="-fx-background-color: #1E1E24;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.studentEnroll">
    <children>
       <ImageView fitHeight="550.0" fitWidth="231.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
