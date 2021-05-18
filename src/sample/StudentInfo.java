@@ -97,5 +97,5 @@ public class StudentInfo {
         while ( rs5.next() ) {
             float gpa1 = rs5.getFloat(1);
             grade.setText(String.valueOf(gpa1));
-    }
-}}
+        }
+    }}

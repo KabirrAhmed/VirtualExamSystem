@@ -2,7 +2,6 @@ package sample;
 
 import Classes.dataModel;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,11 +9,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -28,8 +25,8 @@ import java.util.ResourceBundle;
 
 public class StudentCourse implements Initializable {
 
-   // public Label courseIdText;
-   // public JFXTextField idText;
+    // public Label courseIdText;
+    // public JFXTextField idText;
     //public JFXTextField scoreText;
 /*/
     public JFXButton insertData;
@@ -43,6 +40,8 @@ public class StudentCourse implements Initializable {
     //public JFXTextField lNameText;
     //public JFXTextField regDate;
     //public JFXTextField passwordText;
+
+    int quizId = 3;
 
     int studentId;
 
@@ -60,11 +59,18 @@ public class StudentCourse implements Initializable {
     static String username = "root";
     static String pass = "";
 
+    public void setStudentId(int studentId) {
+        this.studentId=studentId;
+        System.out.println("lets test "+studentId);
+        buildData();
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
         colId.setCellValueFactory(new PropertyValueFactory<>("idStudent"));
-        colCourseID.setCellValueFactory(new PropertyValueFactory<>("course_title"));
+        colCourseID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
         //colPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
         //colRegDate.setCellValueFactory(new PropertyValueFactory<>("regDate"));
         //colGpa.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
@@ -87,24 +93,19 @@ public class StudentCourse implements Initializable {
 */
     }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
-        System.out.println("Student ID is "+studentId);
-    }
-
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
-        StudentHomepage1 st = new StudentHomepage1();
-        System.out.println(st.getStudentId());
+        //StudentHomepage1 st = new StudentHomepage1();
+        //System.out.println(st.getStudentId());
+        teacherHomepage th = new teacherHomepage();
+        System.out.println(studentId);
+        System.out.println("inside fun"+studentId);
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT teacher_has_course.teacher_id, teacher.first_name, teacher.last_name, courses.course_title FROM courses "+
-                    "INNER JOIN teacher_has_course on (courses.course_id = teacher_has_course.course_id)"+
-                    "INNER JOIN teacher on (teacher.teacher_id = teacher_has_course.teacher_id)"+
-                    "where courses.course_id ="+studentId+";");
+            PreparedStatement ps = connection.prepareStatement("SELECT idStudent,course_id FROM student_has_course WHERE idStudent = "+studentId+";");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
-                dm.setStudentId(Integer.parseInt(rs.getString("idstudent")));
+                dm.setTeacherId(Integer.parseInt(rs.getString("idStudent")));
                 dm.setCourseId(Integer.parseInt(rs.getString("course_id")));
                 //dm.setGpa(Float.parseFloat(rs.getString("gpa")));
                 //dm.setRegDate(rs.getString("registration_date"));
@@ -168,10 +169,8 @@ public class StudentCourse implements Initializable {
  */
 
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/studentHomepage1.fxml"));
+        FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentHomepage1.fxml"));
         Parent root = fm.load();
-        StudentHomepage1 stH = fm.getController();//Create object of Second class and get its instance by calling method getController
-        stH.setStudentId(studentId);
         Stage s = new Stage();
         Scene sc = new Scene(root);
         Stage stage = (Stage) backBtn.getScene().getWindow();
@@ -180,6 +179,8 @@ public class StudentCourse implements Initializable {
         s.setScene(sc);
         s.setTitle("Welcome, admin");
         s.show();
+
+
     }
     /*
     public void deleteData(){
@@ -235,6 +236,7 @@ public class StudentCourse implements Initializable {
     public void events(){
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
+
                 //fNameText.setText(dataModel1.getFirstName());
                 //lNameText.setText(dataModel1.getLastName());
                 //passwordText.setText(dataModel1.getPassword());
@@ -303,6 +305,4 @@ public class StudentCourse implements Initializable {
         Stage stage = (Stage) closeAppBtn.getScene().getWindow();
         stage.setIconified(true);
     }
-
-
-    }
+}

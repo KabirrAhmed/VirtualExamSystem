@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -32,6 +33,7 @@ public class adminCourse implements Initializable {
     public JFXButton insertData;
     public JFXButton deleteData;
     public JFXButton editData;
+    public Button deltable;
     public JFXTextField courseNameText;
     public JFXButton backBtn;
     public ImageView searchButton;
@@ -75,7 +77,7 @@ public class adminCourse implements Initializable {
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT courses.course_id,courses.course_title FROM courses;\n");
+            PreparedStatement ps = connection.prepareStatement("SELECT courses.course_id,courses.course_title FROM courses;");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
@@ -105,6 +107,7 @@ public class adminCourse implements Initializable {
 
     private ObservableList<dataModel> dataModels;
 
+
     public void insertDataAction(ActionEvent actionEvent) {
         deleteData();
         insertData();
@@ -121,7 +124,33 @@ public class adminCourse implements Initializable {
             e.printStackTrace();
         }
     }
+    /*public void deleteTable(ActionEvent actionEvent) {
+        deltable();
+        buildData();
+        try {
+            popupTick("Table Deleted Successfully" , "" , false, false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void deltable(){
+        try{
+            Statement state = connection.createStatement();
+            String query = "DELETE FROM student_has_course.course_id ;";
+            state.executeUpdate(query);//EXECUTES QUERY
+            query = "DELETE FROM teacher_has_course.course_id;";
+            state.executeUpdate(query);//EXECUTES QUERY
+            query = "DELETE FROM courses.course_id;";
+            state.executeUpdate(query);//EXECUTES QUERY
+            query = "DELETE FROM courses.course_title;";
+            state.executeUpdate(query);//EXECUTES QUERY
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
 
+     */
     public void deleteDataAction(ActionEvent actionEvent) {
         deleteData();
         buildData();
