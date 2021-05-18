@@ -69,9 +69,9 @@ public class StudentCourse implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
-        colId.setCellValueFactory(new PropertyValueFactory<>("idStudent"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         colCourseID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
-        //colPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
+        colCourseTitle.setCellValueFactory(new PropertyValueFactory<>("course_title"));
         //colRegDate.setCellValueFactory(new PropertyValueFactory<>("regDate"));
         //colGpa.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
         //add your data to the table here.
@@ -101,13 +101,15 @@ public class StudentCourse implements Initializable {
         System.out.println(studentId);
         System.out.println("inside fun"+studentId);
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT idStudent,course_id FROM student_has_course WHERE idStudent = "+studentId+";");
+            PreparedStatement ps = connection.prepareStatement("SELECT student_has_course.idStudent,student_has_course.course_id,courses.course_title FROM student_has_course\n" +
+                    "join courses on courses.course_id = student_has_course.course_id\n" +
+                    "WHERE idStudent = "+studentId+";");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
-                dm.setTeacherId(Integer.parseInt(rs.getString("idStudent")));
+                dm.setStudentId(Integer.parseInt(rs.getString("idStudent")));
                 dm.setCourseId(Integer.parseInt(rs.getString("course_id")));
-                //dm.setGpa(Float.parseFloat(rs.getString("gpa")));
+                dm.setCourse_title(rs.getString("course_title"));
                 //dm.setRegDate(rs.getString("registration_date"));
                 //dm.setPassword(rs.getString("passwordStudent"));
                 dataModels.add(dm);
