@@ -24,6 +24,7 @@
                </VBox.margin>
             </HBox>
             <JFXButton fx:id="backBtn" mnemonicParsing="false" onAction="#backBtnAction" prefHeight="45.0" prefWidth="214.0" style="-fx-background-color: 1E2921;" text="Back" textFill="WHITE">
+            <JFXButton fx:id="backBtn" mnemonicParsing="false" onAction="#backBtnAction" prefHeight="45.0" prefWidth="214.0" style="-fx-background-color: #1E2921;" text="Back" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="20.0" left="30.0" right="30.0" top="10.0" />
                </VBox.margin>
@@ -39,12 +40,18 @@
          <children>
             <TableView fx:id="tableView" prefHeight="404.0" prefWidth="888.0" style="-fx-background-color: #439775;">
               <columns>
+<<<<<<< Updated upstream
                 <TableColumn fx:id="colId" prefWidth="70.0" style="-fx-background-color: #439775;" text="Student ID" />
                 <TableColumn fx:id="colCourseID" prefWidth="150.0" style="-fx-background-color: #439775;" text="Course_ID" />
                   <TableColumn fx:id="colCourseTitle" prefWidth="150.0" style="-fx-background-color: #439775;" text="Course Title" />
                   <TableColumn fx:id="colGpa" minWidth="0.0" prefWidth="100.0" style="-fx-background-color: #439775;" text="GPA" />
                   <TableColumn fx:id="colRegDate" prefWidth="150.0" style="-fx-background-color: #439775;" text="Registration Date" />
                   <TableColumn fx:id="colPassword" prefWidth="130.0" style="-fx-background-color: #439775;" text="Password" />
+=======
+                <TableColumn fx:id="colCourseID" prefWidth="107.0" style="-fx-background-color: #439775;" text="Course ID" />
+                  <TableColumn fx:id="colCourseTitle" prefWidth="529.0" style="-fx-background-color: #439775;" text="Course Title" />
+                  <TableColumn fx:id="colGpa" minWidth="0.0" prefWidth="111.0" style="-fx-background-color: #439775;" text="GPA" />
+>>>>>>> Stashed changes
               </columns>
             </TableView>
          </children>

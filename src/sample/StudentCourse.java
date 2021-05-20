@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
 
 public class StudentCourse implements Initializable {
 
+<<<<<<< Updated upstream
     // public Label courseIdText;
     // public JFXTextField idText;
     //public JFXTextField scoreText;
@@ -42,16 +43,17 @@ public class StudentCourse implements Initializable {
     //public JFXTextField passwordText;
 
     int quizId = 3;
+=======
+    public JFXButton backBtn;
+    int studentId;
+>>>>>>> Stashed changes
 
     int studentId;
 
     public TableView<dataModel> tableView;
-    public TableColumn<dataModel, Integer> colId;
     public TableColumn<dataModel, Integer> colCourseID;
     public TableColumn<dataModel, String> colCourseTitle;
-    //public TableColumn<dataModel, String> colRegDate;
-    //public TableColumn<dataModel, String> colPassword;
-    //public TableColumn<dataModel, Integer> colGpa;
+    public TableColumn<dataModel, Integer> colGpa;
 
     static Connection connection = null;
     static String databaseName = "studentmanagementsystem";
@@ -68,6 +70,7 @@ public class StudentCourse implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+<<<<<<< Updated upstream
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
         colId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         colCourseID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
@@ -75,22 +78,19 @@ public class StudentCourse implements Initializable {
         //colRegDate.setCellValueFactory(new PropertyValueFactory<>("regDate"));
         //colGpa.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
         //add your data to the table here.
+=======
+        colCourseID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
+        colCourseTitle.setCellValueFactory(new PropertyValueFactory<>("course_title"));
+        colGpa.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
+>>>>>>> Stashed changes
         tableView.setItems(dataModels);
         try {
             connection = DriverManager.getConnection(url, username, pass);
             buildData();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }/*
-        searchButton.setOnMouseClicked(e ->{
-            try {
-                events1();
-            } catch (Exception ioException) {
-                ioException.printStackTrace();
-            }
+        }
 
-        });
-*/
     }
 
     public void buildData(){
@@ -101,6 +101,7 @@ public class StudentCourse implements Initializable {
         System.out.println(studentId);
         System.out.println("inside fun"+studentId);
         try{
+<<<<<<< Updated upstream
             PreparedStatement ps = connection.prepareStatement("SELECT student_has_course.idStudent,student_has_course.course_id,courses.course_title FROM student_has_course\n" +
                     "join courses on courses.course_id = student_has_course.course_id\n" +
                     "WHERE idStudent = "+studentId+";");
@@ -110,12 +111,22 @@ public class StudentCourse implements Initializable {
                 dm.setStudentId(Integer.parseInt(rs.getString("idStudent")));
                 dm.setCourseId(Integer.parseInt(rs.getString("course_id")));
                 dm.setCourse_title(rs.getString("course_title"));
+=======
+            PreparedStatement ps = connection.prepareStatement("SELECT courses.course_id, courses.course_title, student_has_course.gpa from student_has_course\n" +
+                    "join courses on courses.course_id = student_has_course.course_id\n" +
+                    "where idStudent = 24\n" +
+                    "ORDER BY courses.course_id;");
+            ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
+            while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
+                dataModel dm = new dataModel();
+                dm.setCourseId(Integer.parseInt(rs.getString("course_id")));
+                dm.setCourse_title(rs.getString("course_title"));
+                dm.setGpa(Float.parseFloat(rs.getString("gpa")));
+>>>>>>> Stashed changes
                 //dm.setRegDate(rs.getString("registration_date"));
                 //dm.setPassword(rs.getString("passwordStudent"));
                 dataModels.add(dm);
             }
-            tableView.setItems(dataModels);
-            tableView.setOnMouseClicked(e ->{events();});
         }
         catch(Exception e){
             e.printStackTrace();
@@ -128,47 +139,11 @@ public class StudentCourse implements Initializable {
     }
 
 
-    public void events1(){
-        buildData();
-    }
 
 
 
     private ObservableList<dataModel> dataModels;
 
-/*
-    public void insertDataAction(ActionEvent actionEvent) {
-        deleteData();
-        insertData();
-        buildData();
-        try {
-            popupTick("Data Inserted Successfully" , "" , false, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void editDataAction(ActionEvent actionEvent) throws SQLException {
-        updateData();
-        buildData();
-        try {
-            popupTick("Data Updated Successfully" , "" , false, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void deleteDataAction(ActionEvent actionEvent) {
-        deleteData();
-        buildData();
-        try {
-            popupTick("Data Deleted Successfully" , "" , false, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
- */
 
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentHomepage1.fxml"));
@@ -184,6 +159,7 @@ public class StudentCourse implements Initializable {
 
 
     }
+<<<<<<< Updated upstream
     /*
     public void deleteData(){
         try{
@@ -259,8 +235,9 @@ public class StudentCourse implements Initializable {
         }
         return false;
     }
+=======
+>>>>>>> Stashed changes
 
-     */
     public void popupTick(String text , String fxmlFile, boolean closeWindow, boolean openNewWindow) throws IOException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FXMLFiles/popupTickMarkOneB.fxml"));
         Parent root = fm.load();
