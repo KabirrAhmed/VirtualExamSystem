@@ -40,23 +40,16 @@
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </JFXTextField>
-            <JFXButton fx:id="insertData" alignment="CENTER" buttonType="RAISED" graphicTextGap="20.0" onAction="#insertDataAction" prefHeight="45.0" prefWidth="214.0" text="Insert" textFill="WHITE">
+            <JFXButton fx:id="insertData" alignment="CENTER" graphicTextGap="20.0" onAction="#insertDataAction" prefHeight="45.0" prefWidth="214.0" style="-fx-background-color: #8CD0A7;" text="Insert">
                <VBox.margin>
-                  <Insets left="30.0" right="30.0" top="10.0" />
+                  <Insets left="30.0" right="30.0" top="200.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="editData" alignment="CENTER" graphicTextGap="20.0" onAction="#editDataAction" prefHeight="45.0" prefWidth="214.0" text="Edit" textFill="WHITE">
-               <VBox.margin>
-                  <Insets left="30.0" right="30.0" top="10.0" />
-               </VBox.margin>
-            </JFXButton>
-            <JFXButton fx:id="deleteData" alignment="CENTER" graphicTextGap="20.0" onAction="#deleteDataAction" prefHeight="45.0" prefWidth="214.0" text="Delete" textFill="WHITE">
-               <VBox.margin>
-                  <Insets left="30.0" right="30.0" top="10.0" />
-               </VBox.margin>
-            </JFXButton>
-            <JFXButton fx:id="backBtn" mnemonicParsing="false" onAction="#backBtnAction" prefHeight="45.0" prefWidth="214.0" text="Back" textFill="WHITE">
+            <JFXButton fx:id="backBtn" buttonType="RAISED" mnemonicParsing="false" onAction="#backBtnAction" prefHeight="45.0" prefWidth="214.0" style="-fx-background-color: #1E1E24;" text="Back" textFill="WHITE">
                <VBox.margin>
                   <Insets left="30.0" right="30.0" top="10.0" />
                </VBox.margin>
