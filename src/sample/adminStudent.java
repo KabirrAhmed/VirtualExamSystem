@@ -66,7 +66,6 @@ public class adminStudent implements Initializable {
         colLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         colPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
         colRegDate.setCellValueFactory(new PropertyValueFactory<>("regDate"));
-        colGpa.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
         //add your data to the table here.
         tableView.setItems(dataModels);
         try {
@@ -89,14 +88,13 @@ public class adminStudent implements Initializable {
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT idstudent, first_name, last_name, gpa, registration_date, passwordStudent FROM student");;
+            PreparedStatement ps = connection.prepareStatement("SELECT idstudent, first_name, last_name, registration_date, passwordStudent FROM student");;
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
                 dm.setStudentId(Integer.parseInt(rs.getString("idstudent")));
                 dm.setFirstName(rs.getString("first_name"));
                 dm.setLastName(rs.getString("last_name"));
-                dm.setGpa(Float.parseFloat(rs.getString("gpa")));
                 dm.setRegDate(rs.getString("registration_date"));
                 dm.setPassword(rs.getString("passwordStudent"));
                 dataModels.add(dm);
@@ -192,7 +190,7 @@ public class adminStudent implements Initializable {
             }
             else{
                 Statement state = connection.createStatement();
-                String query = " insert into studentmanagementsystem.student (idStudent,first_name, last_name,gpa, registration_date, passwordStudent) values ("+Integer.parseInt(idText.getText())+",\""+ fNameText.getText()+"\",\""+lNameText.getText()+"\","+(scoreText.getText())+",'"+regDate.getText()+"','"+passwordText.getText()+"');";
+                String query = " insert into studentmanagementsystem.student (idStudent,first_name, last_name, registration_date, passwordStudent) values ("+Integer.parseInt(idText.getText())+",\""+ fNameText.getText()+"\",\""+lNameText.getText()+"\",'"+regDate.getText()+"','"+passwordText.getText()+"');";
                 state.executeUpdate(query);//EXECUTES QUERY
             }
         } catch (SQLException throwables) {
@@ -204,7 +202,7 @@ public class adminStudent implements Initializable {
     public void updateData() throws SQLException {
         Statement state = connection.createStatement();
         String query = "update studentmanagementsystem.student set "
-                +"first_name = '"+fNameText.getText()+"', last_name='"+lNameText.getText()+"', registration_date='"+regDate.getText()+"', passwordStudent = '"+passwordText.getText()+"',gpa="+(scoreText.getText())+" where IdStudent="+Integer.parseInt(idText.getText())+";";
+                +"first_name = '"+fNameText.getText()+"', last_name='"+lNameText.getText()+"', registration_date='"+regDate.getText()+"', passwordStudent = '"+passwordText.getText()+"' where IdStudent="+Integer.parseInt(idText.getText())+";";
         state.executeUpdate(query);//EXECUTES QUERY
         if(checkIfRecordExists()){
 
@@ -222,7 +220,6 @@ public class adminStudent implements Initializable {
                 passwordText.setText(dataModel1.getPassword());
                 regDate.setText(dataModel1.getRegDate());
                 idText.setText(String.valueOf(+dataModel1.getStudentId()));
-                scoreText.setText(String.valueOf(+dataModel1.getGpa()));
             }
         }
     }
@@ -284,4 +281,4 @@ public class adminStudent implements Initializable {
     }
 
 
-    }
+}

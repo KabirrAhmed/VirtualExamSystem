@@ -82,7 +82,7 @@
                   <Insets left="30.0" right="30.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="backBtn" mnemonicParsing="false" onAction="#backBtnAction" prefHeight="45.0" prefWidth="214.0" style="-fx-background-color: 1E2921;" text="Back" textFill="WHITE">
+            <JFXButton fx:id="backBtn" mnemonicParsing="false" onAction="#backBtnAction" prefHeight="45.0" prefWidth="214.0" style="-fx-background-color: #1E2921;" text="Back" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="20.0" left="30.0" right="30.0" top="10.0" />
                </VBox.margin>
