@@ -106,7 +106,11 @@ public class TeacherCourse implements Initializable {
         System.out.println(teacherId);
         System.out.println("inside fun"+th.getTeacher_id());
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT teacher_id,course_id FROM teacher_has_course WHERE teacher_id = "+teacherId+";");
+            //PreparedStatement ps = connection.prepareStatement("SELECT teacher_id,course_id FROM teacher_has_course WHERE teacher_id = "+teacherId+";");
+            PreparedStatement ps = connection.prepareStatement("SELECT teacher_has_course.teacher_id,teacher_has_course.course_id, courses.course_title FROM teacher_has_course JOIN courses\n" +
+                    "ON (teacher_has_course.course_id = courses.course_id)\n" +
+                    "WHERE teacher_id = 120;");
+
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
@@ -114,7 +118,7 @@ public class TeacherCourse implements Initializable {
                 dm.setCourseId(Integer.parseInt(rs.getString("course_id")));
                 //dm.setGpa(Float.parseFloat(rs.getString("gpa")));
                 //dm.setRegDate(rs.getString("registration_date"));
-                //dm.setPassword(rs.getString("passwordStudent"));
+                dm.setCourse_title(rs.getString("course_title"));
                 dataModels.add(dm);
             }
             tableView.setItems(dataModels);

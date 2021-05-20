@@ -47,9 +47,7 @@ public class TeacherStudent implements Initializable {
     public TableView<dataModel> tableView;
     public TableColumn<dataModel, Integer> colId;
     public TableColumn<dataModel, String> colFirstName;
-    public TableColumn<dataModel, String> colLastName;
-    public TableColumn<dataModel, String> colRegDate;
-    public TableColumn<dataModel, String> colPassword;
+    public TableColumn<dataModel, String> colCourse;
     public TableColumn<dataModel, Integer> colGpa;
 
     static Connection connection = null;
@@ -63,9 +61,7 @@ public class TeacherStudent implements Initializable {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
         colId.setCellValueFactory(new PropertyValueFactory<>("StudentId"));
         colFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        colLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-       // colPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
-        colRegDate.setCellValueFactory(new PropertyValueFactory<>("regDate"));
+        colCourse.setCellValueFactory(new PropertyValueFactory<>("CourseTitle"));
         colGpa.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
         //add your data to the table here.
         tableView.setItems(dataModels);
@@ -89,14 +85,24 @@ public class TeacherStudent implements Initializable {
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT idstudent, first_name, last_name, registration_date FROM student where idStudent = "+ teacherId +";");
+            PreparedStatement ps = connection.prepareStatement("Select d.idStudent,e.first_name,cs.course_title,d.gpa" +
+                    "from student e JOIN student_has_course d" +
+                    "ON (e.idStudent = d.idStudent)" +
+                    "JOIN teacher_has_course t" +
+                    "ON (t.course_id=d.course_id)" +
+                    "JOIN courses cs" +
+                    "ON (cs.course_id=t.course_id)" +
+                    "JOIN teacher te" +
+                    "ON (te.teacher_id=t.teacher_id)" +
+                    "where te.teacher_id=205" +
+                    ";");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
                 dm.setStudentId(Integer.parseInt(rs.getString("idstudent")));
                 dm.setFirstName(rs.getString("first_name"));
-                dm.setLastName(rs.getString("last_name"));
-                dm.setRegDate(rs.getString("registration_date"));
+                dm.setCourse_title(rs.getString("course_title"));
+               dm.setGpa(rs.getFloat("gpa"));
                // dm.setPassword(rs.getString("passwordStudent"));
                 dataModels.add(dm);
             }

@@ -84,9 +84,9 @@
             <TableView fx:id="tableView" prefHeight="404.0" prefWidth="888.0" style="-fx-background-color: #439775;">
               <columns>
                 <TableColumn fx:id="colId" prefWidth="70.0" style="-fx-background-color: #439775;" text="ID" />
-                <TableColumn fx:id="colFirstName" prefWidth="264.39996337890625" style="-fx-background-color: #439775;" text="First Name" />
-                  <TableColumn fx:id="colLastName" prefWidth="270.0" style="-fx-background-color: #439775;" text="Last Name" />
-                  <TableColumn fx:id="colGpa" minWidth="0.0" prefWidth="142.79998779296875" style="-fx-background-color: #439775;" text="GPA" />
+                <TableColumn fx:id="colFirstName" prefWidth="124.0" style="-fx-background-color: #439775;" text="Student Name" />
+                  <TableColumn fx:id="colCourse" prefWidth="267.0" style="-fx-background-color: #439775;" text="Course Title" />
+                  <TableColumn fx:id="colGPA" minWidth="0.0" prefWidth="287.0" style="-fx-background-color: #439775;" text="GPA" />
               </columns>
             </TableView>
          </children>
