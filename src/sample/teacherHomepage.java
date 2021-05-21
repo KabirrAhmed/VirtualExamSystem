@@ -101,6 +101,8 @@ public class teacherHomepage {
         try {
             FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/TeacherStudent.fxml"));
             Parent root = fm.load();
+            TeacherStudent tS = fm.getController();
+            tS.setTeacherId(teacher_id);
             Stage s = new Stage();
             Scene sc = new Scene(root);
             s.initStyle(StageStyle.UNDECORATED);

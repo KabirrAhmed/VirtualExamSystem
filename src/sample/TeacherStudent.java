@@ -38,11 +38,18 @@ public class TeacherStudent implements Initializable {
     public JFXTextField fNameText;
     public JFXButton backBtn;
     public ImageView searchButton;
-    public JFXTextField lNameText;
+    public JFXTextField courseText;
     public JFXTextField regDate;
     public JFXTextField passwordText;
 
-    int quizId = 3, teacherId;
+    public int getTeacherId() {
+        return teacherId;
+    }
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    int teacherId;
 
     public TableView<dataModel> tableView;
     public TableColumn<dataModel, Integer> colId;
@@ -59,8 +66,8 @@ public class TeacherStudent implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
-        colId.setCellValueFactory(new PropertyValueFactory<>("idStudent"));
-        colFirstName.setCellValueFactory(new PropertyValueFactory<>("first_name"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        colFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         colCourse.setCellValueFactory(new PropertyValueFactory<>("course_title"));
         colGpa.setCellValueFactory(new PropertyValueFactory<>("gpa"));
         //add your data to the table here.
@@ -101,17 +108,16 @@ public class TeacherStudent implements Initializable {
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = connection.prepareStatement("Select d.idStudent,e.first_name,cs.course_title,d.gpa" +
-                    "from student e JOIN student_has_course d" +
-                    "ON (e.idStudent = d.idStudent)" +
-                    "JOIN teacher_has_course t" +
-                    "ON (t.course_id=d.course_id)" +
-                    "JOIN courses cs" +
-                    "ON (cs.course_id=t.course_id)" +
-                    "JOIN teacher te" +
-                    "ON (te.teacher_id=t.teacher_id)" +
-                    "where te.teacher_id=205" +
-                    ";");
+            PreparedStatement ps = connection.prepareStatement("Select student_has_course.idStudent,student.first_name,courses.course_title,student_has_course.gpa\n" +
+                    "from student JOIN student_has_course\n" +
+                    "ON (student.idStudent = student_has_course.idStudent)\n" +
+                    "JOIN teacher_has_course\n" +
+                    "ON (teacher_has_course.course_id=student_has_course.course_id)\n" +
+                    "JOIN courses\n" +
+                    "ON (courses.course_id=teacher_has_course.course_id)\n" +
+                    "JOIN teacher                \n" +
+                    "ON (teacher.teacher_id=teacher_has_course.teacher_id)\n" +
+                    "where teacher.teacher_id=210;");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
@@ -119,7 +125,6 @@ public class TeacherStudent implements Initializable {
                 dm.setFirstName(rs.getString("first_name"));
                 dm.setCourse_title(rs.getString("course_title"));
                 dm.setGpa(rs.getFloat("gpa"));
-                // dm.setPassword(rs.getString("passwordStudent"));
                 dataModels.add(dm);
             }
             tableView.setItems(dataModels);
@@ -214,9 +219,9 @@ public class TeacherStudent implements Initializable {
                 }
             }
             else{
-                Statement state = connection.createStatement();
+                /*Statement state = connection.createStatement();
                 String query = " insert into studentmanagementsystem.student (idStudent,first_name, last_name,gpa, registration_date, passwordStudent) values ("+Integer.parseInt(idText.getText())+",\""+ fNameText.getText()+"\",\""+lNameText.getText()+"\","+(scoreText.getText())+",'"+regDate.getText()+"','"+passwordText.getText()+"');";
-                state.executeUpdate(query);//EXECUTES QUERY
+                state.executeUpdate(query);//EXECUTES QUERY*/
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -240,22 +245,20 @@ public class TeacherStudent implements Initializable {
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
                 fNameText.setText(dataModel1.getFirstName());
-                lNameText.setText(dataModel1.getLastName());
-                //passwordText.setText(dataModel1.getPassword());
-                regDate.setText(dataModel1.getRegDate());
+                courseText.setText(dataModel1.getCourse_title());
                 idText.setText(String.valueOf(+dataModel1.getStudentId()));
                 scoreText.setText(String.valueOf(+dataModel1.getGpa()));
             }
         }
     }
     public boolean checkIfRecordExists() throws SQLException {
-        PreparedStatement ps = connection.prepareStatement("SELECT idstudent  FROM studentmanagementsystem.student\n" +
+        /*PreparedStatement ps = connection.prepareStatement("SELECT idstudent  FROM studentmanagementsystem.student\n" +
                 "WHERE idstudent = "+idText.getText()+";");
         ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
         while (rs.next()) {
             if(rs.getString("idstudent") == idText.getText())
                 return true;
-        }
+        }*/
         return false;
     }
     public void popupTick(String text , String fxmlFile, boolean closeWindow, boolean openNewWindow) throws IOException {

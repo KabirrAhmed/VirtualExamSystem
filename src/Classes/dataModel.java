@@ -99,7 +99,6 @@ public class dataModel {
     }
 
 
-
     public dataModel(Integer studentId, String firstName, String lastName, Float gpa, String regDate, String password) {
         this.studentId = new SimpleIntegerProperty(studentId);
         this.gpa = new SimpleFloatProperty(gpa);
