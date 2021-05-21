@@ -17,13 +17,15 @@
       </ImageView>
       <VBox prefHeight="550.0" prefWidth="229.0" style="-fx-background-color: asdas;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="max" prefHeight="17.0" prefWidth="231.0" text="Max gpa" />
+               </children></HBox>
             <JFXTextField fx:id="fNameText" focusColor="#62ff81" labelFloat="true" prefHeight="26.0" prefWidth="181.0" promptText="First Name" unFocusColor="#2a4747">
                <padding>
                   <Insets left="20.0" right="20.0" />
                </padding>
             </JFXTextField>
-            <Label text="Label" />
             <JFXTextField fx:id="lNameText" focusColor="#62ff81" labelFloat="true" prefHeight="26.0" prefWidth="181.0" promptText="Last Name" unFocusColor="#2a4747">
                <padding>
                   <Insets left="20.0" right="20.0" />

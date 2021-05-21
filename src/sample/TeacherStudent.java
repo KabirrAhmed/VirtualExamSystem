@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 
 public class TeacherStudent implements Initializable {
 
-    public Label courseIdText;
+    public Label max;
     public JFXTextField idText;
     public JFXTextField scoreText;
 
@@ -71,7 +71,7 @@ public class TeacherStudent implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        searchButton.setOnMouseClicked(e ->{
+        searchButton.setOnMouseClicked(e -> {
             try {
                 events1();
             } catch (Exception ioException) {
@@ -79,9 +79,25 @@ public class TeacherStudent implements Initializable {
             }
         });
     }
+   /*SELECT idStudent, max(gpa) FROM student_has_course;
+   SELECT idStudent, AVG(gpa) FROM student_has_course;
+   public void maxmin(){
+       try{
+           Statement stmt = connection.createStatement();
+
+           ResultSet rs = stmt.executeQuery("SELECT max(gpa) FROM student_has_course;");
+           while ( rs.next() ) {
+               int count = rs.getInt(1);
+               max.setText(String.valueOf(count));
+           }
+       }
+       catch (SQLException e){
+           e.printStackTrace();
+       }
+    }
 
 
-
+    */
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
