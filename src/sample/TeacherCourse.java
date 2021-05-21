@@ -1,3 +1,4 @@
+
 package sample;
 
 import Classes.dataModel;
@@ -25,8 +26,8 @@ import java.util.ResourceBundle;
 
 public class TeacherCourse implements Initializable {
 
-   // public Label courseIdText;
-   // public JFXTextField idText;
+    // public Label courseIdText;
+    // public JFXTextField idText;
     //public JFXTextField scoreText;
 /*/
     public JFXButton insertData;
@@ -74,7 +75,7 @@ public class TeacherCourse implements Initializable {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
         colId.setCellValueFactory(new PropertyValueFactory<>("teacher_id"));
         colCourseID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
-        //colPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
+        colCourseTitle.setCellValueFactory(new PropertyValueFactory<>("course_title"));
         //colRegDate.setCellValueFactory(new PropertyValueFactory<>("regDate"));
         //colGpa.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
         //add your data to the table here.
@@ -106,7 +107,11 @@ public class TeacherCourse implements Initializable {
         System.out.println(teacherId);
         System.out.println("inside fun"+th.getTeacher_id());
         try{
-            PreparedStatement ps = connection.prepareStatement("SELECT teacher_id,course_id FROM teacher_has_course WHERE teacher_id = "+teacherId+";");
+            //PreparedStatement ps = connection.prepareStatement("SELECT teacher_id,course_id FROM teacher_has_course WHERE teacher_id = "+teacherId+";");
+            PreparedStatement ps = connection.prepareStatement("SELECT teacher_has_course.teacher_id,teacher_has_course.course_id, courses.course_title FROM teacher_has_course JOIN courses\n" +
+                    "ON (teacher_has_course.course_id = courses.course_id)\n" +
+                    "WHERE teacher_id = 120;");
+
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
@@ -114,7 +119,7 @@ public class TeacherCourse implements Initializable {
                 dm.setCourseId(Integer.parseInt(rs.getString("course_id")));
                 //dm.setGpa(Float.parseFloat(rs.getString("gpa")));
                 //dm.setRegDate(rs.getString("registration_date"));
-                //dm.setPassword(rs.getString("passwordStudent"));
+                dm.setCourse_title(rs.getString("course_title"));
                 dataModels.add(dm);
             }
             tableView.setItems(dataModels);
@@ -314,4 +319,4 @@ public class TeacherCourse implements Initializable {
     }
 
 
-    }
+}
