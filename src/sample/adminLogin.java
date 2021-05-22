@@ -20,6 +20,7 @@ public class adminLogin {
     public JFXPasswordField txtPassword;
     public JFXTextField txtId;
     public JFXButton login;
+    public JFXButton BackBtn;
     @FXML
     private ResourceBundle resources;
 
@@ -30,7 +31,22 @@ public class adminLogin {
     void initialize() {
 
     }
-
+    public void backOnClick(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/loginHomepage.fxml"));
+            Parent root = fm.load();
+            Stage s = new Stage();
+            Scene sc = new Scene(root);
+            s.initStyle(StageStyle.UNDECORATED);
+            Stage stage = (Stage) BackBtn.getScene().getWindow();
+            stage.hide();
+            s.setScene(sc);
+            s.setTitle("Welcome, admin");
+            s.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
     public void loginAction(ActionEvent actionEvent) throws SQLException {
         int id = Integer.parseInt(txtId.getText());
         String password = txtPassword.getText();
