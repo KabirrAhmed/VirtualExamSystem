@@ -42,8 +42,6 @@ public class adminStudent implements Initializable {
     public JFXTextField regDate;
     public JFXTextField passwordText;
 
-    int quizId = 3, studentId;
-
     public TableView<dataModel> tableView;
     public TableColumn<dataModel, Integer> colId;
     public TableColumn<dataModel, String> colFirstName;

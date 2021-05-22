@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -97,24 +98,6 @@ public class teacherHomepage {
         }
     }
 
-    public void EnrollOnClick(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/TeacherStudent.fxml"));
-            Parent root = fm.load();
-            TeacherStudent tS = fm.getController();
-            tS.setTeacherId(teacher_id);
-            Stage s = new Stage();
-            Scene sc = new Scene(root);
-            s.initStyle(StageStyle.UNDECORATED);
-            Stage stage = (Stage) EnrollBtn.getScene().getWindow();
-            stage.hide();
-            s.setScene(sc);
-            s.setTitle("Welcome, student");
-            s.show();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
     public void InfoOnClick(ActionEvent actionEvent) {
         try {
@@ -156,5 +139,26 @@ public class teacherHomepage {
         }
 
  */
+    }
+
+    public void enrollOnClick(MouseEvent mouseEvent) {
+        if (mouseEvent.getClickCount() == 1) {
+            try {
+                FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/TeacherStudent.fxml"));
+                Parent root = fm.load();
+                TeacherStudent tS = fm.getController();
+                tS.setTeacherId(teacher_id);
+                Stage s = new Stage();
+                Scene sc = new Scene(root);
+                s.initStyle(StageStyle.UNDECORATED);
+                Stage stage = (Stage) EnrollBtn.getScene().getWindow();
+                stage.hide();
+                s.setScene(sc);
+                s.setTitle("Welcome, student");
+                s.show();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }

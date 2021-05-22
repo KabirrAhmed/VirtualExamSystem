@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -97,20 +98,22 @@ public class adminHomepage {
         }
     }
 
-    public void studentOnClick(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/adminStudent.fxml"));
-            Parent root = fm.load();
-            Stage s = new Stage();
-            Scene sc = new Scene(root);
-            s.initStyle(StageStyle.UNDECORATED);
-            Stage stage = (Stage) studentBtn.getScene().getWindow();
-            stage.hide();
-            s.setScene(sc);
-            s.setTitle("Welcome, admin");
-            s.show();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    public void studentOnClick(javafx.scene.input.MouseEvent mouseEvent) {
+        if (mouseEvent.getClickCount() == 1) {
+            try {
+                FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/adminStudent.fxml"));
+                Parent root = fm.load();
+                Stage s = new Stage();
+                Scene sc = new Scene(root);
+                s.initStyle(StageStyle.UNDECORATED);
+                Stage stage = (Stage) studentBtn.getScene().getWindow();
+                stage.hide();
+                s.setScene(sc);
+                s.setTitle("Welcome, admin");
+                s.show();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
     public void initializeLabels() throws SQLException {
@@ -134,4 +137,5 @@ public class adminHomepage {
             labelCourses.setText(String.valueOf(count));
         }
     }
+
 }
