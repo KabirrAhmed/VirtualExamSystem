@@ -33,7 +33,7 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXTextField fx:id="courseNameText" focusColor="#62ff81" labelFloat="true" layoutX="10.0" layoutY="45.0" prefHeight="26.0" prefWidth="181.0" promptText="Course Name" unFocusColor="#2a4747">
+            <JFXTextField fx:id="courseNameText" focusColor="#62ff81" labelFloat="true" layoutX="10.0" layoutY="45.0" prefHeight="26.0" prefWidth="181.0" promptText="Teacher ID" unFocusColor="#2a4747">
                <padding>
                   <Insets left="20.0" right="20.0" />
                </padding>
@@ -63,7 +63,7 @@
             </JFXButton>
          </children>
       </VBox>
-      <Label layoutX="281.0" layoutY="49.0" prefWidth="200.0" text="Course data" textFill="#e0e0e0">
+      <Label layoutX="252.0" layoutY="49.0" prefHeight="47.0" prefWidth="460.0" text="Further Information" textFill="#e0e0e0">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
@@ -72,14 +72,15 @@
          <children>
             <TableView fx:id="tableView" prefHeight="404.0" prefWidth="888.0" style="-fx-background-color: #439775;">
               <columns>
-                <TableColumn fx:id="colId" prefWidth="115.5999755859375" style="-fx-background-color: #439775;" text="Course ID" />
-                <TableColumn fx:id="colName" prefWidth="632.3999328613281" style="-fx-background-color: #439775;" text="Course Name" />
+                <TableColumn fx:id="colId" prefWidth="100.0" style="-fx-background-color: #439775;" text="Course ID" />
+                <TableColumn fx:id="colName" prefWidth="266.0" style="-fx-background-color: #439775;" text="Course Name" />
+                  <TableColumn fx:id="colTeacherId" prefWidth="110.0" style="-fx-background-color: #439775;" text="Teacher ID" />
+                  <TableColumn fx:id="colTeachername" prefWidth="271.0" style="-fx-background-color: #439775;" text="Teacher Name" />
               </columns>
             </TableView>
          </children>
       </HBox>
       <Circle fx:id="closeAppBtn" fill="#f86e72" layoutX="1001.0" layoutY="23.0" onMouseClicked="#closeAppBtnOnClick" radius="9.0" stroke="BLACK" strokeType="INSIDE" style="-fx-cursor: HAND;" />
       <Circle fx:id="minimizeBtn" fill="#48bf84" layoutX="973.0" layoutY="23.0" onMouseClicked="#minimizeBtnOnClick" radius="9.0" stroke="BLACK" strokeType="INSIDE" style="-fx-cursor: HAND;" />
-      <JFXButton fx:id="AddTeacherBtn" layoutX="731.0" layoutY="60.0" mnemonicParsing="false" onAction="#AddTeacherOnClick" prefHeight="25.0" prefWidth="253.0" style="-fx-background-color: #439775;" text="Add Teacher To Course" textFill="WHITE" />
    </children>
 </AnchorPane>

@@ -20,18 +20,19 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:student" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:habiba" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf04a8ab-b795-4695-86b3-eef3167eeff4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfoenix_9_0_10.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/jfoenix_9_0_10.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_20.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FxmlFiles/AddTeacher.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/AddTeacher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VirtualExamSystem/sample/teacherHomepage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VirtualExamSystem/sample/teacherHomepage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FxmlFiles/AdminLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/FxmlFiles/AdminLogin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/adminLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/adminLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FxmlFiles/adminCourse.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/FxmlFiles/adminCourse.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FxmlFiles/adminHomepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/FxmlFiles/adminHomepage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/TeacherStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TeacherStudent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/adminCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/adminCourse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +56,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../../Downloads/mysql-connector-java-8.0.20/mysql-connector-java-8.0.20/mysql-connector-java-8.0.20.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/FxmlFiles" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -65,9 +66,9 @@
       <recent name="sample" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Habiba\4th Sem\Database Lab\project\Final\FINAL_FINAL\VirtualExamSystem\src\FxmlFiles" />
       <recent name="C:\Users\pc sweet\Documents\GitHub\VirtualExamSystem\src" />
       <recent name="C:\Users\pc sweet\Documents\GitHub\VirtualExamSystem\src\FxmlFiles" />
-      <recent name="D:\Habiba\4th Sem\Database Lab\project\Final\FINAL_FINAL\VirtualExamSystem\src\FxmlFiles" />
       <recent name="C:\Users\pc sweet\Documents\GitHub\VirtualExamSystem\src\sample" />
     </key>
   </component>
@@ -114,7 +115,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="student" />
+                        <option value="habiba" />
                       </list>
                     </value>
                   </entry>
@@ -148,28 +149,28 @@
     <state x="421" y="136" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1621686460544" />
     <state x="473" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1619202152063" />
     <state x="591" y="194" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1621619812886" />
-    <state width="1877" height="347" key="GridCell.Tab.0.bottom" timestamp="1621625520544">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="13" key="GridCell.Tab.0.bottom" timestamp="1621706841789">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1621618892075" />
+    <state width="1323" height="13" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1621706841789" />
     <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1621362421031" />
     <state width="1877" height="347" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1621625520544" />
-    <state width="1877" height="347" key="GridCell.Tab.0.center" timestamp="1621625520543">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="13" key="GridCell.Tab.0.center" timestamp="1621706841789">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1621618892075" />
+    <state width="1323" height="13" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1621706841789" />
     <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1621362421031" />
     <state width="1877" height="347" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1621625520543" />
-    <state width="1877" height="347" key="GridCell.Tab.0.left" timestamp="1621625520543">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="13" key="GridCell.Tab.0.left" timestamp="1621706841789">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1621618892075" />
+    <state width="1323" height="13" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1621706841789" />
     <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1621362421031" />
     <state width="1877" height="347" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1621625520543" />
-    <state width="1877" height="347" key="GridCell.Tab.0.right" timestamp="1621625520544">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="13" key="GridCell.Tab.0.right" timestamp="1621706841789">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1621618892075" />
+    <state width="1323" height="13" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1621706841789" />
     <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1621362421031" />
     <state width="1877" height="347" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1621625520544" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1621625520544">
@@ -215,6 +216,20 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1620488504020" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/sample/adminCourse.java</url>
+          <line>210</line>
+          <properties class="sample.adminCourse" method="events">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/StudentCourse_class$Main.ic" NAME="Main Coverage Results" MODIFIED="1620666742970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
