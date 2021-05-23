@@ -52,9 +52,18 @@ public class teacherHomepage {
     }
     public void setTeacherId(int teacher_id){
         this.teacher_id = teacher_id;
-        lblWelc.setText("Welcome, " + String.valueOf(teacher_id));
-
-        System.out.println("teacher id issssss"+this.teacher_id);    }
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("select CONCAT(teacher.first_name, ' ', teacher.last_name)AS Name from teacher where teacher.teacher_id = "+teacher_id+";");
+        while ( rs.next() ) {
+            String teacherName = rs.getString(1);
+            lblWelc.setText("Welcome, "+teacherName);
+        }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+   }
     public int getTeacher_id(){
         return teacher_id;
     }
@@ -77,14 +86,23 @@ public class teacherHomepage {
         }
     }
 
-    public void courseOnClick(ActionEvent actionEvent) {
+    public void courseOnClick(MouseEvent actionEvent) {
+        if (actionEvent.getClickCount() == 1) {
+            course();
+        }
+    }
+    public void courseOnClicck(ActionEvent actionEvent) {
+        course();
+    }
+
+    public void course(){
         try {
             FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/TeacherCourse.fxml"));
             Parent root = fm.load();
             TeacherCourse tc = fm.getController();
             tc.setTeacherId(teacher_id);
-            System.out.println("Teacher Id is" +getTeacher_id());
-            Stage s =new Stage();
+            System.out.println("Teacher Id is" + getTeacher_id());
+            Stage s = new Stage();
             Scene sc = new Scene(root);
             s.setScene(sc);
             s.initStyle(StageStyle.UNDECORATED);
@@ -98,8 +116,7 @@ public class teacherHomepage {
         }
     }
 
-
-    public void InfoOnClick(ActionEvent actionEvent) {
+    public void info(){
         try {
             FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/TeacherInfo.fxml"));
             Parent root = fm.load();
@@ -117,6 +134,16 @@ public class teacherHomepage {
             System.out.println(e.getMessage());
         }
     }
+
+    public void InfoOnClick(MouseEvent actionEvent) {
+        if (actionEvent.getClickCount() == 1) {
+            info();
+        }
+    }
+    public void InfoOnClicck(ActionEvent actionEvent) {
+        info();
+    }
+
     public void initializeLabels() throws SQLException {
         System.out.println("Successful");
         Statement state = connection.createStatement();
@@ -141,24 +168,31 @@ public class teacherHomepage {
  */
     }
 
+    public void enroll(){
+        try {
+            FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/TeacherStudent.fxml"));
+            Parent root = fm.load();
+            TeacherStudent tS = fm.getController();
+            tS.setTeacherId(teacher_id);
+            Stage s = new Stage();
+            Scene sc = new Scene(root);
+            s.initStyle(StageStyle.UNDECORATED);
+            Stage stage = (Stage) EnrollBtn.getScene().getWindow();
+            stage.hide();
+            s.setScene(sc);
+            s.setTitle("Welcome, student");
+            s.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void enrollOnClick(MouseEvent mouseEvent) {
         if (mouseEvent.getClickCount() == 1) {
-            try {
-                FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/TeacherStudent.fxml"));
-                Parent root = fm.load();
-                TeacherStudent tS = fm.getController();
-                tS.setTeacherId(teacher_id);
-                Stage s = new Stage();
-                Scene sc = new Scene(root);
-                s.initStyle(StageStyle.UNDECORATED);
-                Stage stage = (Stage) EnrollBtn.getScene().getWindow();
-                stage.hide();
-                s.setScene(sc);
-                s.setTitle("Welcome, student");
-                s.show();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+            enroll();
         }
+    }
+    public void enrollOnClicck(ActionEvent actionEvent){
+        enroll();
     }
 }

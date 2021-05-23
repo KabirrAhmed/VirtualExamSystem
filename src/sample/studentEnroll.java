@@ -141,7 +141,11 @@ public class studentEnroll implements Initializable {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/studentHomepage1.fxml"));
         Parent root = fm.load();
         StudentHomepage1 stH = fm.getController();//Create object of Second class and get its instance by calling method getController
-        stH.setStudentId(studentId);
+        try {
+            stH.setStudentId(studentId);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         Stage s = new Stage();
         Scene sc = new Scene(root);
         Stage stage = (Stage) backBtn.getScene().getWindow();

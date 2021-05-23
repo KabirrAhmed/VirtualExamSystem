@@ -98,7 +98,7 @@ public class StudentCourse implements Initializable {
     private ObservableList<dataModel> dataModels;
 
 
-    public void backBtnAction(ActionEvent actionEvent) throws IOException {
+    public void backBtnAction(ActionEvent actionEvent) throws IOException, SQLException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentHomepage1.fxml"));
         Parent root = fm.load();
         StudentHomepage1 stH = fm.getController();
