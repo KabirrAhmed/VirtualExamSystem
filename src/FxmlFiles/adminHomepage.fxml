@@ -13,7 +13,7 @@
       <children>
          <AnchorPane layoutX="339.0" layoutY="89.0" onMouseClicked="#studentOnClicck" prefHeight="166.0" prefWidth="167.0" style="-fx-background-color: E0E0E0;" AnchorPane.bottomAnchor="295.0" AnchorPane.rightAnchor="518.0" AnchorPane.topAnchor="89.0">
             <children>
-               <JFXButton fx:id="studentBtn" layoutX="31.0" layoutY="120.0" mnemonicParsing="false" onAction="#studentOnClicck" prefHeight="25.0" prefWidth="106.0" ripplerFill="#fffbfb" style="-fx-background-color: transparent;" text="Student" textFill="#1e1e24">
+               <JFXButton fx:id="studentBtn" layoutX="31.0" layoutY="120.0" mnemonicParsing="false" onAction="#studentOnClick" prefHeight="25.0" prefWidth="106.0" ripplerFill="#fffbfb" style="-fx-background-color: transparent;" text="Student" textFill="#1e1e24">
                   <opaqueInsets>
                      <Insets />
                   </opaqueInsets>
