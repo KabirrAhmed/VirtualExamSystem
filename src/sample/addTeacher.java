@@ -66,19 +66,12 @@ public class addTeacher implements Initializable {
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = connection.prepareStatement("Select teacher.teacher_id,teacher.first_name,courses.course_id,courses.course_title\n" +
-                    "                    from teacher JOIN teacher_has_course\n" +
-                    "                    ON (teacher_has_course.teacher_id = teacher_has_course.teacher_id)\n" +
-                    "                    JOIN courses\n" +
-                    "                    ON (teacher_has_course.course_id=courses.course_id)\n" +
-                    "                     where teacher.teacher_id=205;");
+            PreparedStatement ps = connection.prepareStatement("Select course_id,course_title from courses;");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
                 dm.setCourseId(Integer.parseInt(rs.getString("course_id")));
                 dm.setCourse_title(rs.getString("course_title"));
-                dm.setTeacher_id(Integer.parseInt(rs.getString("teacher_id")));
-                dm.setTeacherName(rs.getString("first_name"));
                 dataModels.add(dm);
             }
             tableView.setItems(dataModels);
@@ -99,32 +92,16 @@ public class addTeacher implements Initializable {
 
     private ObservableList<dataModel> dataModels;
 
+    public void addTeacherOnClick(ActionEvent actionEvent) {
+
+
+    }
     public void insertDataAction(ActionEvent actionEvent) {
-        deleteData();
         insertData();
         buildData();
 
     }
 
-    public void editDataAction(ActionEvent actionEvent) throws SQLException, IOException {
-        updateData();
-        buildData();
-        try {
-            popupTick("Data Updated Successfully" , "" , false, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void deleteDataAction(ActionEvent actionEvent) {
-        deleteData();
-        buildData();
-        try {
-            popupTick("Data Deleted Successfully" , "" , false, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/adminHomepage.fxml"));
@@ -138,21 +115,6 @@ public class addTeacher implements Initializable {
         s.setTitle("Welcome, admin");
         s.show();
     }
-    public void deleteData(){
-        try{
-            Statement state = connection.createStatement();
-            String query = "DELETE FROM studentmanagementsystem.student_has_course WHERE student_has_course.course_id = "+Integer.parseInt(idText.getText())+";";
-            state.executeUpdate(query);//EXECUTES QUERY
-            query = "DELETE FROM studentmanagementsystem.teacher_has_course WHERE teacher_has_course.course_id = "+Integer.parseInt(idText.getText())+";";
-            state.executeUpdate(query);//EXECUTES QUERY
-            query = "DELETE FROM studentmanagementsystem.courses WHERE courses.course_id = "+Integer.parseInt(idText.getText())+";";
-            state.executeUpdate(query);//EXECUTES QUERY
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-    }
-
     public void insertData(){
         try {
             if(checkIfRecordExists()){
@@ -165,7 +127,7 @@ public class addTeacher implements Initializable {
             }
             else{
                 Statement state = connection.createStatement();
-                String query = " insert into studentmanagementsystem.courses (courses.course_id,courses.course_title) values ("+Integer.parseInt(idText.getText())+",\""+ courseNameText.getText()+"\");";
+                String query = " insert into teacher_has_course (teacher_has_course.course_id, teacher_has_course.teacher_id) values ("+Integer.parseInt(idText.getText())+","+ Integer.parseInt(courseNameText.getText())+"\");";
                 state.executeUpdate(query);//EXECUTES QUERY
                 try {
                     popupTick("Data Inserted Successfully" , "" , false, false);
@@ -178,17 +140,6 @@ public class addTeacher implements Initializable {
         }
     }
 
-    public void updateData() throws SQLException, IOException {
-        if(checkIfRecordExists()){
-            Statement state = connection.createStatement();
-            String query = "update studentmanagementsystem.courses set "
-                    +"course_title = \""+ courseNameText.getText()+"\" where courses.course_id="+Integer.parseInt(idText.getText())+";";
-            state.executeUpdate(query);//EXECUTES QUERY
-        }
-        else{
-            popupCross("Record does not exist.", "", false , false);
-        }
-    }
     public void events(){
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
@@ -198,11 +149,11 @@ public class addTeacher implements Initializable {
         }
     }
     public boolean checkIfRecordExists() throws SQLException {
-        PreparedStatement ps = connection.prepareStatement("SELECT course_id  FROM studentmanagementsystem.courses\n" +
-                "WHERE courses.course_id = "+idText.getText()+";");
+        PreparedStatement ps = connection.prepareStatement("SELECT course_id, teacher_id FROM studentmanagementsystem.teacher_has_course" +
+                "WHERE teacher_has_course.course_id = "+idText.getText()+";");
         ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
         while (rs.next()) {
-            if(Integer.parseInt(rs.getString("course_id")) == Integer.parseInt(idText.getText())){
+            if(Integer.parseInt(rs.getString("course_id")) == Integer.parseInt(idText.getText()) && Integer.parseInt(rs.getString("teacher_id")) == Integer.parseInt(courseNameText.getText())){
                 System.out.println("Record does exist");
                 return true;}
         }

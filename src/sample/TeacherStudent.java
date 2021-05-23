@@ -46,7 +46,10 @@ public class TeacherStudent implements Initializable {
         return teacherId;
     }
     public void setTeacherId(int teacherId) {
+
         this.teacherId = teacherId;
+        System.out.println("teacher id is : "+teacherId);
+        buildData();
     }
 
     int teacherId;
@@ -117,7 +120,7 @@ public class TeacherStudent implements Initializable {
                     "ON (courses.course_id=teacher_has_course.course_id)\n" +
                     "JOIN teacher                \n" +
                     "ON (teacher.teacher_id=teacher_has_course.teacher_id)\n" +
-                    "where teacher.teacher_id=210;");
+                    "where teacher.teacher_id="+getTeacherId()+";");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
@@ -151,7 +154,6 @@ public class TeacherStudent implements Initializable {
 
 
     public void insertDataAction(ActionEvent actionEvent) {
-        deleteData();
         insertData();
         buildData();
         try {
@@ -171,15 +173,6 @@ public class TeacherStudent implements Initializable {
         }
     }
 
-    public void deleteDataAction(ActionEvent actionEvent) {
-        deleteData();
-        buildData();
-        try {
-            popupTick("Data Deleted Successfully" , "" , false, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/teacherHomepage.fxml"));
@@ -195,24 +188,12 @@ public class TeacherStudent implements Initializable {
         s.setTitle("Welcome, admin");
         s.show();
     }
-    public void deleteData(){
-        try{
-            Statement state = connection.createStatement();
-            String query = "DELETE FROM studentmanagementsystem.student_has_course WHERE idStudent = "+Integer.parseInt(idText.getText())+";";
-            state.executeUpdate(query);//EXECUTES QUERY
-            query = "DELETE FROM studentmanagementsystem.student WHERE idStudent = "+Integer.parseInt(idText.getText())+";";
-            state.executeUpdate(query);//EXECUTES QUERY
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-    }
+
 
     public void insertData(){
         try {
             if(checkIfRecordExists()){
                 try{
-                    deleteData();
                 }
                 catch(Exception e){
                     System.out.println(e);
