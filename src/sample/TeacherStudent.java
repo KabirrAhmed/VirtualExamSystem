@@ -153,16 +153,6 @@ public class TeacherStudent implements Initializable {
     private ObservableList<dataModel> dataModels;
 
 
-    public void insertDataAction(ActionEvent actionEvent) {
-        insertData();
-        buildData();
-        try {
-            popupTick("Data Inserted Successfully" , "" , false, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void editDataAction(ActionEvent actionEvent) throws SQLException {
         updateData();
         buildData();
@@ -172,8 +162,6 @@ public class TeacherStudent implements Initializable {
             e.printStackTrace();
         }
     }
-
-
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/teacherHomepage.fxml"));
         Parent root = fm.load();
@@ -188,28 +176,6 @@ public class TeacherStudent implements Initializable {
         s.setTitle("Welcome, admin");
         s.show();
     }
-
-
-    public void insertData(){
-        try {
-            if(checkIfRecordExists()){
-                try{
-                }
-                catch(Exception e){
-                    System.out.println(e);
-                }
-            }
-            else{
-                /*Statement state = connection.createStatement();
-                String query = " insert into studentmanagementsystem.student (idStudent,first_name, last_name,gpa, registration_date, passwordStudent) values ("+Integer.parseInt(idText.getText())+",\""+ fNameText.getText()+"\",\""+lNameText.getText()+"\","+(scoreText.getText())+",'"+regDate.getText()+"','"+passwordText.getText()+"');";
-                state.executeUpdate(query);//EXECUTES QUERY*/
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-    }
-
     public void updateData() throws SQLException {
         Statement state = connection.createStatement();
         String query = "update studentmanagementsystem.student set gpa="+(scoreText.getText())+" where IdStudent="+Integer.parseInt(idText.getText())+";";
@@ -221,7 +187,6 @@ public class TeacherStudent implements Initializable {
             System.out.println("NO");
         }
     }
-
     public void events(){
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
