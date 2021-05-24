@@ -114,6 +114,7 @@ public class adminStudent implements Initializable {
 
 
     public void insertDataAction(ActionEvent actionEvent) {
+        deleteData();
         insertData();
         buildData();
         try {
@@ -156,7 +157,7 @@ public class adminStudent implements Initializable {
         s.show();
     }
     public void deleteData(){
-        try{
+        /*try{
             Statement state = connection.createStatement();
             String query = "DELETE FROM studentmanagementsystem.student_has_course WHERE idStudent = "+Integer.parseInt(idText.getText())+";";
             state.executeUpdate(query);//EXECUTES QUERY
@@ -165,11 +166,11 @@ public class adminStudent implements Initializable {
         }
         catch(Exception e){
             System.out.println(e);
-        }
+        }*/
     }
 
     public void insertData(){
-        try {
+        /*try {
             if(checkIfRecordExists()){
                 try{
                     deleteData();
@@ -186,11 +187,11 @@ public class adminStudent implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
+*/
     }
 
     public void updateData() throws SQLException {
-        Statement state = connection.createStatement();
+        /*Statement state = connection.createStatement();
         String query = "update studentmanagementsystem.student set "
                 +"first_name = '"+fNameText.getText()+"', last_name='"+lNameText.getText()+"', registration_date='"+regDate.getText()+"', passwordStudent = '"+passwordText.getText()+"' where IdStudent="+Integer.parseInt(idText.getText())+";";
         state.executeUpdate(query);//EXECUTES QUERY
@@ -199,11 +200,11 @@ public class adminStudent implements Initializable {
         }
         else{
             System.out.println("NO");
-        }
+        }*/
     }
 
     public void events(){
-        for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
+        /*for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
                 fNameText.setText(dataModel1.getFirstName());
                 lNameText.setText(dataModel1.getLastName());
@@ -211,7 +212,7 @@ public class adminStudent implements Initializable {
                 regDate.setText(dataModel1.getRegDate());
                 idText.setText(String.valueOf(+dataModel1.getStudentId()));
             }
-        }
+        }*/
     }
     public boolean checkIfRecordExists() throws SQLException {
         PreparedStatement ps = connection.prepareStatement("SELECT idstudent  FROM studentmanagementsystem.student\n" +
