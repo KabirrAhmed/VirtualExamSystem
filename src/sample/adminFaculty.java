@@ -115,7 +115,6 @@ public class adminFaculty implements Initializable {
 
 
     public void insertDataAction(ActionEvent actionEvent) {
-        deleteData();
         insertData();
         buildData();
         try {
