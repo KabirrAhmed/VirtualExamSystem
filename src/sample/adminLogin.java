@@ -1,4 +1,5 @@
 package sample;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -31,7 +32,7 @@ public class adminLogin {
 
     }
 
-    public void loginAction(ActionEvent actionEvent) throws SQLException {
+    public void loginAction(ActionEvent actionEvent) throws SQLException, IOException {
         int id = Integer.parseInt(txtId.getText());
         String password = txtPassword.getText();
         admin aadmi = new admin(password, id);
@@ -51,5 +52,27 @@ public class adminLogin {
                 System.out.println(e.getMessage());
             }
         }
+        else
+        {
+            popupCross("Invalid ID and/or Password" , "", false, false);
+
+        }
+    }
+    public void popupCross(String text , String fxmlFile, boolean closeWindow, boolean openNewWindow) throws IOException {
+        FXMLLoader fm = new FXMLLoader(getClass().getResource("../FXMLFiles/popupCrossMarkOneB.fxml"));
+        Parent root = fm.load();
+        popupCrossMarkOneB popup = fm.getController();
+        popup.setter(text, fxmlFile ,openNewWindow );
+        if(closeWindow){
+            Stage stage = (Stage) login.getScene().getWindow(); //ONLY CHANGE THIS ID WHENEVER USING IN DIFFERENT SCENES
+            stage.hide();
+        }
+        Stage s =new Stage();
+        Scene sc = new Scene(root);
+        s.initStyle(StageStyle.UNDECORATED);
+        s.hide();
+        s.setScene(sc);
+        s.show();
+
     }
 }

@@ -127,7 +127,7 @@ public class addTeacher implements Initializable {
             }
             else{
                 Statement state = connection.createStatement();
-                String query = " insert into teacher_has_course (teacher_has_course.course_id, teacher_has_course.teacher_id) values ("+Integer.parseInt(idText.getText())+","+ Integer.parseInt(courseNameText.getText())+"\");";
+                String query = " insert into teacher_has_course (teacher_has_course.course_id, teacher_has_course.teacher_id) values ("+Integer.parseInt(idText.getText())+","+ Integer.parseInt(courseNameText.getText())+");";
                 state.executeUpdate(query);//EXECUTES QUERY
                 try {
                     popupTick("Data Inserted Successfully" , "" , false, false);
@@ -144,20 +144,23 @@ public class addTeacher implements Initializable {
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
                 idText.setText(String.valueOf(dataModel1.getCourse_id()));
-                courseNameText.setText(String.valueOf(dataModel1.getTeacher_id()));
+                //courseNameText.setText(String.valueOf(dataModel1.getTeacher_id()));
             }
         }
     }
     public boolean checkIfRecordExists() throws SQLException {
-        PreparedStatement ps = connection.prepareStatement("SELECT course_id, teacher_id FROM studentmanagementsystem.teacher_has_course" +
+        PreparedStatement ps = connection.prepareStatement("SELECT course_id, teacher_id FROM studentmanagementsystem.teacher_has_course " +
                 "WHERE teacher_has_course.course_id = "+idText.getText()+";");
+        int courseid, teacherid;
         ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
         while (rs.next()) {
-            if(Integer.parseInt(rs.getString("course_id")) == Integer.parseInt(idText.getText()) && Integer.parseInt(rs.getString("teacher_id")) == Integer.parseInt(courseNameText.getText())){
-                System.out.println("Record does exist");
+            courseid = Integer.parseInt(rs.getString("course_id"));
+            teacherid = Integer.parseInt(rs.getString("teacher_id"));
+            System.out.println(courseid+"hello"+teacherid);
+            if(courseid==Integer.parseInt(idText.getText()) && teacherid == Integer.parseInt(courseNameText.getText()) ){
                 return true;}
+
         }
-        System.out.println("Record does not exist");
         return false;
     }
 

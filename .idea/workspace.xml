@@ -158,30 +158,30 @@
     <state x="421" y="136" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1621793655010" />
     <state x="473" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1619202152063" />
     <state x="591" y="194" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1621882784405" />
-    <state width="1877" height="266" key="GridCell.Tab.0.bottom" timestamp="1621883061433">
+    <state width="1877" height="266" key="GridCell.Tab.0.bottom" timestamp="1621885240668">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="22" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1621881835621" />
     <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1621362421031" />
-    <state width="1877" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1621883061433" />
-    <state width="1877" height="266" key="GridCell.Tab.0.center" timestamp="1621883061433">
+    <state width="1877" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1621885240668" />
+    <state width="1877" height="266" key="GridCell.Tab.0.center" timestamp="1621885240668">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="22" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1621881835620" />
     <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1621362421031" />
-    <state width="1877" height="266" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1621883061433" />
-    <state width="1877" height="266" key="GridCell.Tab.0.left" timestamp="1621883061433">
+    <state width="1877" height="266" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1621885240668" />
+    <state width="1877" height="266" key="GridCell.Tab.0.left" timestamp="1621885240668">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="22" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1621881835620" />
     <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1621362421031" />
-    <state width="1877" height="266" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1621883061433" />
-    <state width="1877" height="266" key="GridCell.Tab.0.right" timestamp="1621883061433">
+    <state width="1877" height="266" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1621885240668" />
+    <state width="1877" height="266" key="GridCell.Tab.0.right" timestamp="1621885240668">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="22" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1621881835621" />
     <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1621362421031" />
-    <state width="1877" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1621883061433" />
+    <state width="1877" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1621885240668" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1621625520544">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -251,15 +251,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/sample/addTeacher.java</url>
-          <line>150</line>
-          <properties class="sample.addTeacher" method="checkIfRecordExists">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/sample/addTeacher.java</url>
-          <line>181</line>
+          <line>184</line>
           <properties class="sample.addTeacher" method="popupCross">
             <option name="EMULATED" value="true" />
           </properties>

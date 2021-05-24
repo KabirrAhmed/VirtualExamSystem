@@ -1,6 +1,5 @@
 package sample;
 
-import Classes.popupCrossMarkOneB;
 import com.jfoenix.controls.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -75,6 +74,7 @@ public class loginHomepage implements Initializable {
                     s.show();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
+                    popupCross("Invalid ID and/or Password" , "", false, false);
                 }
             }
 
@@ -104,7 +104,7 @@ public class loginHomepage implements Initializable {
                 }
                 catch (Exception e){
                     System.out.println(e.getMessage());
-                }
+                    popupCross("Invalid ID and/or Password" , "", false, false);                }
             }
             else
                 popupCross("Invalid ID and/or Password" , "", false, false);
