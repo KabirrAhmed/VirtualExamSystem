@@ -66,8 +66,8 @@ public class StudentCourse implements Initializable {
         System.out.println(st.getStudentId());
         try{
             PreparedStatement ps = connection.prepareStatement("SELECT courses.course_id, courses.course_title, student_has_course.gpa from student_has_course\n" +
-                    "join courses on courses.course_id = student_has_course.course_id" +
-                    "where idStudent = 25\n"+
+                    "join courses on courses.course_id = student_has_course.course_id\n" +
+                    "where idStudent = 24\n"+
                     "ORDER BY courses.course_id;");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
