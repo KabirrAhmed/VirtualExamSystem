@@ -35,6 +35,8 @@ public class adminCourse implements Initializable {
     public JFXTextField courseNameText;
     public JFXButton backBtn;
     public ImageView searchButton;
+    public JFXButton addTeacher;
+
 
     int quizId = 3, studentId;
 
@@ -61,17 +63,20 @@ public class adminCourse implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        searchButton.setOnMouseClicked(e ->{
-            try {
-                events1();
-            } catch (Exception ioException) {
-                ioException.printStackTrace();
-            }
-        });
     }
 
-
-
+    public void addTeacherOnClick(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/addTeacher.fxml"));
+        Parent root = fm.load();
+        Stage s = new Stage();
+        Scene sc = new Scene(root);
+        Stage stage = (Stage) addTeacher.getScene().getWindow();
+        stage.hide();
+        s.initStyle(StageStyle.UNDECORATED);
+        s.setScene(sc);
+        s.setTitle("Welcome, admin");
+        s.show();
+    }
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
@@ -95,15 +100,10 @@ public class adminCourse implements Initializable {
             }
         }
     }
-
-
     public void events1(){
         buildData();
     }
-
-
-
-    private ObservableList<dataModel> dataModels;
+     private ObservableList<dataModel> dataModels;
 
     public void insertDataAction(ActionEvent actionEvent) {
         deleteData();

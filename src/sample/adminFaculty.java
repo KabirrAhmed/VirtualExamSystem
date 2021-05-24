@@ -73,13 +73,6 @@ public class adminFaculty implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        searchButton.setOnMouseClicked(e ->{
-            try {
-                events1();
-            } catch (Exception ioException) {
-                ioException.printStackTrace();
-            }
-        });
     }
 
 
@@ -122,7 +115,6 @@ public class adminFaculty implements Initializable {
 
 
     public void insertDataAction(ActionEvent actionEvent) {
-        deleteData();
         insertData();
         buildData();
         try {

@@ -59,7 +59,7 @@ public class adminStudent implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
-        colId.setCellValueFactory(new PropertyValueFactory<>("StudentId"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         colFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         colLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         colPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
@@ -72,13 +72,6 @@ public class adminStudent implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        searchButton.setOnMouseClicked(e ->{
-            try {
-                events1();
-            } catch (Exception ioException) {
-                ioException.printStackTrace();
-            }
-        });
     }
 
 
@@ -121,7 +114,6 @@ public class adminStudent implements Initializable {
 
 
     public void insertDataAction(ActionEvent actionEvent) {
-        deleteData();
         insertData();
         buildData();
         try {

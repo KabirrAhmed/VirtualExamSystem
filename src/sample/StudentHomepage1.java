@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -50,9 +51,14 @@ public class StudentHomepage1 {
         initializeLabels();
     }
 
-    public void setStudentId(int studentId){
+    public void setStudentId(int studentId) throws SQLException {
         this.studentId = studentId;
-        lblWelc.setText("Welcome, " + String.valueOf(studentId));
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("select CONCAT(student.first_name, ' ', student.last_name)AS Name from student where student.idStudent = "+studentId+";");
+        while ( rs.next() ) {
+            String studentName = rs.getString(1);
+            lblWelc.setText("Welcome, "+studentName);
+        }
     }
     public int getStudentId(){
         this.studentId = studentId;
@@ -76,7 +82,16 @@ public class StudentHomepage1 {
         }
     }
 
+    public void CourseOnClicck(javafx.scene.input.MouseEvent mouseEvent) {
+        if (mouseEvent.getClickCount() == 1) {
+            course();
+        }
+    }
     public void courseOnClick(ActionEvent actionEvent) {
+        course();
+    }
+
+    public void course(){
         try {
             FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentCourse.fxml"));
             Parent root = fm.load();
@@ -97,6 +112,15 @@ public class StudentHomepage1 {
     }
 
     public void EnrollOnClick(ActionEvent actionEvent) {
+        enroll();
+    }
+    public void EnrollOnClicck(javafx.scene.input.MouseEvent mouseEvent) {
+        if (mouseEvent.getClickCount() == 1) {
+            enroll();
+        }
+    }
+
+    public void enroll(){
         try {
             FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/studentEnroll.fxml"));
             Parent root = fm.load();
@@ -116,6 +140,15 @@ public class StudentHomepage1 {
     }
 
     public void InfoOnClick(ActionEvent actionEvent) {
+        info();
+    }
+    public void InfoOnClicck(javafx.scene.input.MouseEvent mouseEvent) {
+        if (mouseEvent.getClickCount() == 1) {
+            info();
+        }
+    }
+
+    public void info(){
         try {
             FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentInfo.fxml"));
             Parent root = fm.load();
@@ -133,6 +166,7 @@ public class StudentHomepage1 {
             System.out.println(e.getMessage());
         }
     }
+
     public void initializeLabels() throws SQLException {
         Statement state = connection.createStatement();
 /*
@@ -155,4 +189,7 @@ public class StudentHomepage1 {
 
  */
     }
+
+
+
 }

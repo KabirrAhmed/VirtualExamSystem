@@ -67,7 +67,7 @@ public class StudentCourse implements Initializable {
         try{
             PreparedStatement ps = connection.prepareStatement("SELECT courses.course_id, courses.course_title, student_has_course.gpa from student_has_course\n" +
                     "join courses on courses.course_id = student_has_course.course_id\n" +
-                    "where idStudent = 24\n" +
+                    "where idStudent = 24\n"+
                     "ORDER BY courses.course_id;");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
@@ -98,7 +98,7 @@ public class StudentCourse implements Initializable {
     private ObservableList<dataModel> dataModels;
 
 
-    public void backBtnAction(ActionEvent actionEvent) throws IOException {
+    public void backBtnAction(ActionEvent actionEvent) throws IOException, SQLException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/StudentHomepage1.fxml"));
         Parent root = fm.load();
         StudentHomepage1 stH = fm.getController();

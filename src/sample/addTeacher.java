@@ -10,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -26,39 +25,21 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 
-public class TeacherStudent implements Initializable {
+public class addTeacher implements Initializable {
 
-    public Label max;
     public JFXTextField idText;
-    public JFXTextField scoreText;
-
     public JFXButton insertData;
     public JFXButton deleteData;
     public JFXButton editData;
-    public JFXTextField fNameText;
+    public JFXTextField courseNameText;
     public JFXButton backBtn;
-    public ImageView searchButton;
-    public JFXTextField courseText;
-    public JFXTextField regDate;
-    public JFXTextField passwordText;
 
-    public int getTeacherId() {
-        return teacherId;
-    }
-    public void setTeacherId(int teacherId) {
 
-        this.teacherId = teacherId;
-        System.out.println("teacher id is : "+teacherId);
-        buildData();
-    }
-
-    int teacherId;
+    int quizId = 3, studentId;
 
     public TableView<dataModel> tableView;
     public TableColumn<dataModel, Integer> colId;
-    public TableColumn<dataModel, String> colFirstName;
-    public TableColumn<dataModel, String> colCourse;
-    public TableColumn<dataModel, Integer> colGpa;
+    public TableColumn<dataModel, String> colName;
 
     static Connection connection = null;
     static String databaseName = "studentmanagementsystem";
@@ -69,10 +50,8 @@ public class TeacherStudent implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
-        colId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
-        colFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        colCourse.setCellValueFactory(new PropertyValueFactory<>("course_title"));
-        colGpa.setCellValueFactory(new PropertyValueFactory<>("gpa"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("course_id"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("course_title"));
         //add your data to the table here.
         tableView.setItems(dataModels);
         try {
@@ -81,53 +60,18 @@ public class TeacherStudent implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        searchButton.setOnMouseClicked(e -> {
-            try {
-                events1();
-            } catch (Exception ioException) {
-                ioException.printStackTrace();
-            }
-        });
+
+        ;
     }
-   /*SELECT idStudent, max(gpa) FROM student_has_course;
-   SELECT idStudent, AVG(gpa) FROM student_has_course;
-   public void maxmin(){
-       try{
-           Statement stmt = connection.createStatement();
-
-           ResultSet rs = stmt.executeQuery("SELECT max(gpa) FROM student_has_course;");
-           while ( rs.next() ) {
-               int count = rs.getInt(1);
-               max.setText(String.valueOf(count));
-           }
-       }
-       catch (SQLException e){
-           e.printStackTrace();
-       }
-    }
-
-
-    */
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = connection.prepareStatement("Select student_has_course.idStudent,student.first_name,courses.course_title,student_has_course.gpa\n" +
-                    "from student JOIN student_has_course\n" +
-                    "ON (student.idStudent = student_has_course.idStudent)\n" +
-                    "JOIN teacher_has_course\n" +
-                    "ON (teacher_has_course.course_id=student_has_course.course_id)\n" +
-                    "JOIN courses\n" +
-                    "ON (courses.course_id=teacher_has_course.course_id)\n" +
-                    "JOIN teacher                \n" +
-                    "ON (teacher.teacher_id=teacher_has_course.teacher_id)\n" +
-                    "where teacher.teacher_id="+getTeacherId()+";");
+            PreparedStatement ps = connection.prepareStatement("Select course_id,course_title from courses;");
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
                 dataModel dm = new dataModel();
-                dm.setStudentId(Integer.parseInt(rs.getString("idStudent")));
-                dm.setFirstName(rs.getString("first_name"));
+                dm.setCourseId(Integer.parseInt(rs.getString("course_id")));
                 dm.setCourse_title(rs.getString("course_title"));
-                dm.setGpa(rs.getFloat("gpa"));
                 dataModels.add(dm);
             }
             tableView.setItems(dataModels);
@@ -142,31 +86,26 @@ public class TeacherStudent implements Initializable {
             }
         }
     }
-
-
     public void events1(){
         buildData();
     }
 
-
-
     private ObservableList<dataModel> dataModels;
 
+    public void addTeacherOnClick(ActionEvent actionEvent) {
 
-    public void editDataAction(ActionEvent actionEvent) throws SQLException {
-        updateData();
-        buildData();
-        try {
-            popupTick("Data Updated Successfully" , "" , false, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
+    public void insertDataAction(ActionEvent actionEvent) {
+        insertData();
+        buildData();
+
+    }
+
+
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/teacherHomepage.fxml"));
+        FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/adminHomepage.fxml"));
         Parent root = fm.load();
-        teacherHomepage tH = fm.getController();
-        tH.setTeacherId(teacherId);
         Stage s = new Stage();
         Scene sc = new Scene(root);
         Stage stage = (Stage) backBtn.getScene().getWindow();
@@ -176,37 +115,52 @@ public class TeacherStudent implements Initializable {
         s.setTitle("Welcome, admin");
         s.show();
     }
-    public void updateData() throws SQLException {
-        Statement state = connection.createStatement();
-        String query = "update studentmanagementsystem.student set gpa="+(scoreText.getText())+" where IdStudent="+Integer.parseInt(idText.getText())+";";
-        state.executeUpdate(query);//EXECUTES QUERY
-        if(checkIfRecordExists()){
-
-        }
-        else{
-            System.out.println("NO");
+    public void insertData(){
+        try {
+            if(checkIfRecordExists()){
+                try{
+                    popupCross("Course Record already Exists", "", false, false);
+                }
+                catch(Exception e){
+                    System.out.println(e);
+                }
+            }
+            else{
+                Statement state = connection.createStatement();
+                String query = " insert into teacher_has_course (teacher_has_course.course_id, teacher_has_course.teacher_id) values ("+Integer.parseInt(idText.getText())+","+ Integer.parseInt(courseNameText.getText())+"\");";
+                state.executeUpdate(query);//EXECUTES QUERY
+                try {
+                    popupTick("Data Inserted Successfully" , "" , false, false);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
+
     public void events(){
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
-                fNameText.setText(dataModel1.getFirstName());
-                courseText.setText(dataModel1.getCourse_title());
-                idText.setText(String.valueOf(+dataModel1.getStudentId()));
-                scoreText.setText(String.valueOf(+dataModel1.getGpa()));
+                idText.setText(String.valueOf(dataModel1.getCourse_id()));
+                courseNameText.setText(String.valueOf(dataModel1.getTeacher_id()));
             }
         }
     }
     public boolean checkIfRecordExists() throws SQLException {
-        /*PreparedStatement ps = connection.prepareStatement("SELECT idstudent  FROM studentmanagementsystem.student\n" +
-                "WHERE idstudent = "+idText.getText()+";");
+        PreparedStatement ps = connection.prepareStatement("SELECT course_id, teacher_id FROM studentmanagementsystem.teacher_has_course" +
+                "WHERE teacher_has_course.course_id = "+idText.getText()+";");
         ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
         while (rs.next()) {
-            if(rs.getString("idstudent") == idText.getText())
-                return true;
-        }*/
+            if(Integer.parseInt(rs.getString("course_id")) == Integer.parseInt(idText.getText()) && Integer.parseInt(rs.getString("teacher_id")) == Integer.parseInt(courseNameText.getText())){
+                System.out.println("Record does exist");
+                return true;}
+        }
+        System.out.println("Record does not exist");
         return false;
     }
+
     public void popupTick(String text , String fxmlFile, boolean closeWindow, boolean openNewWindow) throws IOException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FXMLFiles/popupTickMarkOneB.fxml"));
         Parent root = fm.load();

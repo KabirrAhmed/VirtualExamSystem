@@ -110,7 +110,7 @@ public class TeacherCourse implements Initializable {
             //PreparedStatement ps = connection.prepareStatement("SELECT teacher_id,course_id FROM teacher_has_course WHERE teacher_id = "+teacherId+";");
             PreparedStatement ps = connection.prepareStatement("SELECT teacher_has_course.teacher_id,teacher_has_course.course_id, courses.course_title FROM teacher_has_course JOIN courses\n" +
                     "ON (teacher_has_course.course_id = courses.course_id)\n" +
-                    "WHERE teacher_id = 120;");
+                    "WHERE teacher_id = "+getTeacherId()+";");
 
             ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
             while (rs.next()) {   //WHILE LOOP FETCHES RECORD FROM DATABASE
