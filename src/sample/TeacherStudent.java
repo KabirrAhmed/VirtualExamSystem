@@ -31,6 +31,7 @@ public class TeacherStudent implements Initializable {
     public Label max;
     public JFXTextField idText;
     public JFXTextField scoreText;
+    public JFXTextField courseid;
 
     public JFXButton insertData;
     public JFXButton deleteData;
@@ -59,6 +60,7 @@ public class TeacherStudent implements Initializable {
     public TableColumn<dataModel, String> colFirstName;
     public TableColumn<dataModel, String> colCourse;
     public TableColumn<dataModel, Integer> colGpa;
+    public TableColumn<dataModel, Integer> colCourseId;
 
     static Connection connection = null;
     static String databaseName = "studentmanagementsystem";
@@ -72,6 +74,7 @@ public class TeacherStudent implements Initializable {
         colId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         colFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         colCourse.setCellValueFactory(new PropertyValueFactory<>("course_title"));
+        colCourseId.setCellValueFactory(new PropertyValueFactory<>("course_id"));
         colGpa.setCellValueFactory(new PropertyValueFactory<>("gpa"));
         //add your data to the table here.
         tableView.setItems(dataModels);
@@ -111,7 +114,7 @@ public class TeacherStudent implements Initializable {
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = connection.prepareStatement("Select student_has_course.idStudent,student.first_name,courses.course_title,student_has_course.gpa\n" +
+            PreparedStatement ps = connection.prepareStatement("Select student_has_course.course_id,student_has_course.idStudent,student.first_name,courses.course_title,student_has_course.gpa\n" +
                     "from student JOIN student_has_course\n" +
                     "ON (student.idStudent = student_has_course.idStudent)\n" +
                     "JOIN teacher_has_course\n" +
@@ -126,6 +129,7 @@ public class TeacherStudent implements Initializable {
                 dataModel dm = new dataModel();
                 dm.setStudentId(Integer.parseInt(rs.getString("idStudent")));
                 dm.setFirstName(rs.getString("first_name"));
+               dm.setCourseId(Integer.parseInt(rs.getString("course_id")));
                 dm.setCourse_title(rs.getString("course_title"));
                 dm.setGpa(rs.getFloat("gpa"));
                 dataModels.add(dm);
@@ -178,10 +182,9 @@ public class TeacherStudent implements Initializable {
     }
     public void updateData() throws SQLException {
         Statement state = connection.createStatement();
-        String query = "update studentmanagementsystem.student set gpa="+(scoreText.getText())+" where IdStudent="+Integer.parseInt(idText.getText())+";";
+        String query = "update studentmanagementsystem.student_has_course set gpa="+Float.parseFloat(scoreText.getText())+" where IdStudent="+(idText.getText())+"&&student_has_course.course_id="+(courseid.getText())+";";
         state.executeUpdate(query);//EXECUTES QUERY
         if(checkIfRecordExists()){
-
         }
         else{
             System.out.println("NO");
@@ -194,6 +197,7 @@ public class TeacherStudent implements Initializable {
                 courseText.setText(dataModel1.getCourse_title());
                 idText.setText(String.valueOf(+dataModel1.getStudentId()));
                 scoreText.setText(String.valueOf(+dataModel1.getGpa()));
+                courseid.setText(String.valueOf(+dataModel1.getCourse_id()));
             }
         }
     }

@@ -20,7 +20,6 @@ public class StudentInfo {
     public Label f_name;
     public Label l_name;
     public Label datelabel;
-    public Label grade;
     public JFXButton backBtn;
     @FXML
     private ResourceBundle resources;

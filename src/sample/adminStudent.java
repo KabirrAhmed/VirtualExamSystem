@@ -48,7 +48,6 @@ public class adminStudent implements Initializable {
     public TableColumn<dataModel, String> colLastName;
     public TableColumn<dataModel, String> colRegDate;
     public TableColumn<dataModel, String> colPassword;
-    public TableColumn<dataModel, Integer> colGpa;
 
     static Connection connection = null;
     static String databaseName = "studentmanagementsystem";

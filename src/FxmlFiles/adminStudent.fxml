@@ -93,8 +93,8 @@
                 <TableColumn fx:id="colId" prefWidth="70.0" style="-fx-background-color: #439775;" text="ID" />
                 <TableColumn fx:id="colFirstName" prefWidth="150.0" style="-fx-background-color: #439775;" text="First Name" />
                   <TableColumn fx:id="colLastName" prefWidth="150.0" style="-fx-background-color: #439775;" text="Last Name" />
-                  <TableColumn fx:id="colRegDate" prefWidth="150.0" style="-fx-background-color: #439775;" text="Registration Date" />
-                  <TableColumn fx:id="colPassword" prefWidth="130.0" style="-fx-background-color: #439775;" text="Password" />
+                  <TableColumn fx:id="colRegDate" prefWidth="199.0" style="-fx-background-color: #439775;" text="Registration Date" />
+                  <TableColumn fx:id="colPassword" prefWidth="178.0" style="-fx-background-color: #439775;" text="Password" />
               </columns>
             </TableView>
          </children>

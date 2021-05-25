@@ -25,25 +25,7 @@ import java.util.ResourceBundle;
 
 
 public class TeacherCourse implements Initializable {
-
-    // public Label courseIdText;
-    // public JFXTextField idText;
-    //public JFXTextField scoreText;
-/*/
-    public JFXButton insertData;
-    public JFXButton deleteData;
-    public JFXButton editData;
-    public JFXTextField fNameText;
-
- */
     public JFXButton backBtn;
-    //public ImageView searchButton;
-    //public JFXTextField lNameText;
-    //public JFXTextField regDate;
-    //public JFXTextField passwordText;
-
-    int quizId = 3;
-
     public int getTeacherId() {
         return teacherId;
     }
@@ -60,9 +42,6 @@ public class TeacherCourse implements Initializable {
     public TableColumn<dataModel, Integer> colId;
     public TableColumn<dataModel, Integer> colCourseID;
     public TableColumn<dataModel, String> colCourseTitle;
-    //public TableColumn<dataModel, String> colRegDate;
-    //public TableColumn<dataModel, String> colPassword;
-    //public TableColumn<dataModel, Integer> colGpa;
 
     static Connection connection = null;
     static String databaseName = "studentmanagementsystem";
@@ -134,50 +113,7 @@ public class TeacherCourse implements Initializable {
             }
         }
     }
-
-
-    public void events1(){
-        buildData();
-    }
-
-
-
     private ObservableList<dataModel> dataModels;
-
-/*
-    public void insertDataAction(ActionEvent actionEvent) {
-        deleteData();
-        insertData();
-        buildData();
-        try {
-            popupTick("Data Inserted Successfully" , "" , false, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void editDataAction(ActionEvent actionEvent) throws SQLException {
-        updateData();
-        buildData();
-        try {
-            popupTick("Data Updated Successfully" , "" , false, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void deleteDataAction(ActionEvent actionEvent) {
-        deleteData();
-        buildData();
-        try {
-            popupTick("Data Deleted Successfully" , "" , false, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
- */
-
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/teacherHomepage.fxml"));
         Parent root = fm.load();
@@ -191,60 +127,7 @@ public class TeacherCourse implements Initializable {
         s.setScene(sc);
         s.setTitle("Welcome, admin");
         s.show();
-
-
     }
-    /*
-    public void deleteData(){
-        try{
-            Statement state = connection.createStatement();
-            String query = "DELETE FROM studentmanagementsystem.student_has_course WHERE idStudent = "+Integer.parseInt(idText.getText())+";";
-            state.executeUpdate(query);//EXECUTES QUERY
-            query = "DELETE FROM studentmanagementsystem.student WHERE idStudent = "+Integer.parseInt(idText.getText())+";";
-            state.executeUpdate(query);//EXECUTES QUERY
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-    }
-
-    public void insertData(){
-        try {
-            if(checkIfRecordExists()){
-                try{
-                    deleteData();
-                }
-                catch(Exception e){
-                    System.out.println(e);
-                }
-            }
-            else{
-                Statement state = connection.createStatement();
-                String query = " insert into studentmanagementsystem.student (idStudent,first_name, last_name,gpa, registration_date, passwordStudent) values ("+Integer.parseInt(idText.getText())+",\""+ fNameText.getText()+"\",\""+lNameText.getText()+"\","+(scoreText.getText())+",'"+regDate.getText()+"','"+passwordText.getText()+"');";
-                state.executeUpdate(query);//EXECUTES QUERY
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-    }
-
-    public void updateData() throws SQLException {
-        Statement state = connection.createStatement();
-        String query = "update studentmanagementsystem.student set "
-                +"first_name = '"+fNameText.getText()+"', last_name='"+lNameText.getText()+"', registration_date='"+regDate.getText()+"', passwordStudent = '"+passwordText.getText()+"',gpa="+(scoreText.getText())+" where IdStudent="+Integer.parseInt(idText.getText())+";";
-        state.executeUpdate(query);//EXECUTES QUERY
-        if(checkIfRecordExists()){
-
-        }
-        else{
-            System.out.println("NO");
-        }
-    }
-
- */
-
-
     public void events(){
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){

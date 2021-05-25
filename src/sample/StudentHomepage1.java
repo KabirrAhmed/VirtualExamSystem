@@ -23,8 +23,6 @@ public class StudentHomepage1 {
     public JFXButton courseBtn;
     public Label labelStudents;
     public Label lblWelc;
-    public Label labelFaculty;
-    public Label labelCourses;
     public JFXButton backBtn;
 
     @FXML
