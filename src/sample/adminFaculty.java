@@ -28,7 +28,6 @@ import java.util.ResourceBundle;
 
 public class adminFaculty implements Initializable {
 
-    public Label courseIdText;
     public JFXTextField idText;
     public JFXTextField scoreText;
 
@@ -41,9 +40,6 @@ public class adminFaculty implements Initializable {
     public JFXTextField lNameText;
     public JFXTextField regDate;
     public JFXTextField passwordText;
-
-    int quizId = 3, studentId;
-
     public TableView<dataModel> tableView;
     public TableColumn<dataModel, Integer> colId;
     public TableColumn<dataModel, String> colFirstName;
@@ -74,9 +70,6 @@ public class adminFaculty implements Initializable {
             throwables.printStackTrace();
         }
     }
-
-
-
     public void buildData(){
         dataModels = FXCollections.observableArrayList();
         try{
@@ -103,17 +96,7 @@ public class adminFaculty implements Initializable {
             }
         }
     }
-
-
-    public void events1(){
-        buildData();
-    }
-
-
-
     private ObservableList<dataModel> dataModels;
-
-
     public void insertDataAction(ActionEvent actionEvent) {
         insertData();
         buildData();
@@ -123,7 +106,6 @@ public class adminFaculty implements Initializable {
             e.printStackTrace();
         }
     }
-
     public void editDataAction(ActionEvent actionEvent) throws SQLException {
         updateData();
         buildData();
@@ -133,7 +115,6 @@ public class adminFaculty implements Initializable {
             e.printStackTrace();
         }
     }
-
     public void deleteDataAction(ActionEvent actionEvent) {
         deleteData();
         buildData();
@@ -143,7 +124,6 @@ public class adminFaculty implements Initializable {
             e.printStackTrace();
         }
     }
-
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/adminHomepage.fxml"));
         Parent root = fm.load();
@@ -168,7 +148,6 @@ public class adminFaculty implements Initializable {
             System.out.println(e);
         }
     }
-
     public void insertData(){
         try {
             if(checkIfRecordExists()){
@@ -189,7 +168,6 @@ public class adminFaculty implements Initializable {
         }
 
     }
-
     public void updateData() throws SQLException {
         Statement state = connection.createStatement();
         String query = "update studentmanagementsystem.teacher set "
@@ -202,7 +180,6 @@ public class adminFaculty implements Initializable {
             System.out.println("NO");
         }
     }
-
     public void events(){
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){
@@ -241,7 +218,6 @@ public class adminFaculty implements Initializable {
         s.show();
 
     }
-
     public void popupCross(String text , String fxmlFile, boolean closeWindow, boolean openNewWindow) throws IOException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FXMLFiles/popupCrossMarkOneB.fxml"));
         Parent root = fm.load();
@@ -259,17 +235,13 @@ public class adminFaculty implements Initializable {
         s.show();
 
     }
-
     public Circle closeAppBtn;
     public void closeAppBtnOnClick(MouseEvent mouseEvent) {
         Stage stage = (Stage) closeAppBtn.getScene().getWindow();
         stage.close();
     }
-
     public void minimizeBtnOnClick(MouseEvent mouseEvent) {
         Stage stage = (Stage) closeAppBtn.getScene().getWindow();
         stage.setIconified(true);
     }
-
-
     }

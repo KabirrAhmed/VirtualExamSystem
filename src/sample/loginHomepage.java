@@ -24,9 +24,6 @@ import java.util.ResourceBundle;
 
 public class loginHomepage implements Initializable {
 
-
-    public Label lblOne;
-    public JFXSpinner spinner;
     public JFXPasswordField txtPassword;
     public JFXToggleButton hToggle;
     public JFXTextField txtId;

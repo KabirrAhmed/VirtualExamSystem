@@ -29,13 +29,10 @@ public class studentEnroll implements Initializable {
 
     public JFXTextField idText;
     public JFXButton insertData;
-    public JFXButton deleteData;
     public JFXButton editData;
     public JFXTextField courseNameText;
     public JFXButton backBtn;
     public ImageView searchButton;
-
-    int quizId = 3;
 
     public int getStudentId() {
         return studentId;
@@ -119,23 +116,6 @@ public class studentEnroll implements Initializable {
         buildData();
     }
 
-    public void editDataAction(ActionEvent actionEvent) throws SQLException, IOException {
-        updateData();
-        buildData();
-        try {
-            popupTick("Data Updated Successfully" , "" , false, false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void deleteDataAction(ActionEvent actionEvent) {
-        try {
-            studentIsEnrolled();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
 
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fm = new FXMLLoader(getClass().getResource("../FxmlFiles/studentHomepage1.fxml"));
@@ -154,20 +134,6 @@ public class studentEnroll implements Initializable {
         s.setScene(sc);
         s.setTitle("Welcome, admin");
         s.show();
-    }
-    public void deleteData(){
-        /*try{
-            Statement state = connection.createStatement();
-            String query = "DELETE FROM studentmanagementsystem.student_has_course WHERE student_has_course.course_id = "+Integer.parseInt(idText.getText())+";";
-            state.executeUpdate(query);//EXECUTES QUERY
-            query = "DELETE FROM studentmanagementsystem.teacher_has_course WHERE teacher_has_course.course_id = "+Integer.parseInt(idText.getText())+";";
-            state.executeUpdate(query);//EXECUTES QUERY
-            query = "DELETE FROM studentmanagementsystem.courses WHERE courses.course_id = "+Integer.parseInt(idText.getText())+";";
-            state.executeUpdate(query);//EXECUTES QUERY
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }*/
     }
 
     public void enrollCourse(){
@@ -200,17 +166,6 @@ public class studentEnroll implements Initializable {
         }
     }
 
-    public void updateData() throws SQLException, IOException {
-        /*if(studentIsEnrolled()){
-            Statement state = connection.createStatement();
-            String query = "update studentmanagementsystem.courses set "
-                    +"course_title = \""+ courseNameText.getText()+"\" where courses.course_id="+Integer.parseInt(idText.getText())+";";
-            state.executeUpdate(query);//EXECUTES QUERY
-        }
-        else{
-            popupCross("Record does not exist.", "", false , false);
-        }*/
-    }
     public void events(){
         for(dataModel dataModel1 : tableView.getSelectionModel().getSelectedItems()){
             for(int i = 1; i<=1; i++){

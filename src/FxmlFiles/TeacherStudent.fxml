@@ -46,6 +46,11 @@
                         <Insets />
                      </HBox.margin>
                   </JFXTextField>
+                  <JFXTextField fx:id="courseid" focusColor="#62ff81" labelFloat="true" layoutX="125.0" layoutY="10.0" prefHeight="26.0" prefWidth="181.0" promptText="Course ID" unFocusColor="#2a4747">
+                     <padding>
+                        <Insets left="5.0" right="20.0" />
+                     </padding>
+                  </JFXTextField>
                </children>
                <VBox.margin>
                   <Insets top="25.0" />
@@ -73,9 +78,10 @@
             <TableView fx:id="tableView" prefHeight="404.0" prefWidth="888.0" style="-fx-background-color: #439775;">
               <columns>
                 <TableColumn fx:id="colId" prefWidth="70.0" style="-fx-background-color: #439775;" text="ID" />
-                <TableColumn fx:id="colFirstName" prefWidth="264.39996337890625" style="-fx-background-color: #439775;" text="First Name" />
-                  <TableColumn fx:id="colCourse" prefWidth="270.0" style="-fx-background-color: #439775;" text="Course Title" />
-                  <TableColumn fx:id="colGpa" minWidth="0.0" prefWidth="142.79998779296875" style="-fx-background-color: #439775;" text="GPA" />
+                <TableColumn fx:id="colFirstName" prefWidth="151.0" style="-fx-background-color: #439775;" text="First Name" />
+                  <TableColumn fx:id="colCourseId" minWidth="0.0" prefWidth="105.0" style="-fx-background-color: #439775;" text="Course ID" />
+                  <TableColumn fx:id="colCourse" prefWidth="183.0" style="-fx-background-color: #439775;" text="Course Title" />
+                  <TableColumn fx:id="colGpa" minWidth="0.0" prefWidth="382.0" style="-fx-background-color: #439775;" text="GPA" />
               </columns>
             </TableView>
          </children>

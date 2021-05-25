@@ -29,14 +29,8 @@ public class addTeacher implements Initializable {
 
     public JFXTextField idText;
     public JFXButton insertData;
-    public JFXButton deleteData;
-    public JFXButton editData;
     public JFXTextField courseNameText;
     public JFXButton backBtn;
-
-
-    int quizId = 3, studentId;
-
     public TableView<dataModel> tableView;
     public TableColumn<dataModel, Integer> colId;
     public TableColumn<dataModel, String> colName;
@@ -148,12 +142,14 @@ public class addTeacher implements Initializable {
             }
         }
     }
+
     public boolean checkIfRecordExists() throws SQLException {
         PreparedStatement ps = connection.prepareStatement("SELECT course_id, teacher_id FROM studentmanagementsystem.teacher_has_course" +
                 "WHERE teacher_has_course.course_id = "+idText.getText()+";");
         ResultSet rs = ps.executeQuery();   //EXECUTES QUERY
         while (rs.next()) {
-            if(Integer.parseInt(rs.getString("course_id")) == Integer.parseInt(idText.getText()) && Integer.parseInt(rs.getString("teacher_id")) == Integer.parseInt(courseNameText.getText())){
+            //if(Integer.parseInt(rs.getString("course_id")) == Integer.parseInt(idText.getText()) && ((Integer.parseInt(("teacher_id") == Integer.parseInt(courseNameText.getText())))
+            {
                 System.out.println("Record does exist");
                 return true;}
         }
